@@ -3,10 +3,15 @@ import Pagination from "@/Components/Pagination";
 import {TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP} from "@/constants.jsx";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
-import { Link, router } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 
 
-export default function TasksTable({ tasks, success, queryParams=null, hideProjectColumn=false }) {
+export default function TasksTable({tasks, success, queryParams=null, hideProjectColumn=false }) {
+        const user = usePage().props.auth.user; 
+        const { auth } = usePage().props;
+        console.log(auth.user);
+
+
        queryParams = queryParams || {}
       
         const searchFieldChanged = (name, value) => {
@@ -15,8 +20,12 @@ export default function TasksTable({ tasks, success, queryParams=null, hideProje
                 } else {
                     delete queryParams[name]
                 }
-        
+                {auth.user.role == 'admin' &&
+                    router.get(route('task.index'), queryParams)
+                } 
+                {auth.user.role == 'user' &&
                 router.get(route('myTasks.index'), queryParams)
+                }  
             }
         
             const onKeyPress = (name, e) => {
@@ -36,7 +45,12 @@ export default function TasksTable({ tasks, success, queryParams=null, hideProje
                     queryParams.sort_field = name;
                     queryParams.sort_direction = 'asc';
                 }
-                router.get(route('myTasks.index'), queryParams)
+                {auth.user.role == "admin" &&
+                router.get(route('task.index'), queryParams)
+                }
+                {auth.user.role == "user" &&
+                    router.get(route('myTasks.index'), queryParams)
+                }
             };   
 
         const deleteTask = (task) => {
@@ -44,7 +58,12 @@ export default function TasksTable({ tasks, success, queryParams=null, hideProje
             {
                 return;
             }   
-                router.delete(route('myTasks.destroy', task.id)) 
+                { auth.user.role == "admin" &&
+                router.delete(route('task.destroy', task.id)) 
+                }
+                { auth.user.role == "user" &&
+                    router.delete(route('myTasks.destroy', task.id)) 
+                }
             }
             
             return (
@@ -128,9 +147,16 @@ export default function TasksTable({ tasks, success, queryParams=null, hideProje
                                                   <td className="px-3 py-2">{task.project.name}</td>
                                             )}
                                             <th className="px-3 py-2  text-gray-100 hover:underline">
+                                                {auth.user.role == "admin" &&
+                                                <Link href={route('task.show', task.id)}>
+                                                    {task.name}
+                                                </Link>
+                                               }
+                                                {auth.user.role == "user" &&
                                                 <Link href={route('myTasks.show', task.id)}>
                                                     {task.name}
                                                 </Link>
+                                               }
                                             </th>
                                             <td className="px-3 py-2">
                                                 {/* {task.status} */}
@@ -145,13 +171,27 @@ export default function TasksTable({ tasks, success, queryParams=null, hideProje
                                             <td className="px-3 py-2 text-nowrap">{task.due_date}</td>
                                             <td className="px-3 py-2">{task.createdBy.name}</td>
                                             <td className="px-3 py-2 text-nowrap">
-                                            <Link href={route('myTasks.edit', task.id)}
+                                            
+                                            {auth.user.role == 'admin' &&
+                                           
+                                            <Link href={route('task.edit', task.id)}
                                                 className="font-medium text-blue-600 
                                                 dark:text-blue-500 hover:underline mx-1"
                                                 >
                                                     Edit
-                                                </Link>
+                                            </Link>
+                                            } 
 
+                                            {auth.user.role == 'user' &&
+                                           
+                                           <Link href={route('myTasks.edit', task.id)}
+                                               className="font-medium text-blue-600 
+                                               dark:text-blue-500 hover:underline mx-1"
+                                               >
+                                                   Edit
+                                            </Link>
+                                            } 
+                                                  
                                                 <button 
                                                 onClick={(e) => deleteTask(task)}
                                                 className="font-medium text-red-600 
@@ -159,6 +199,8 @@ export default function TasksTable({ tasks, success, queryParams=null, hideProje
                                                 >
                                                     Delete
                                                 </button>
+                                                
+                                            
                                             </td>
 
                                     </tr>

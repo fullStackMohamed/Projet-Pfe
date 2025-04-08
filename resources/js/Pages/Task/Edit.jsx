@@ -159,7 +159,8 @@ export default function Edit({ auth, task, projects, users }) {
                                   </SelectInput>
                                   <InputError message={errors.priority} className="mt-2" />
                                 </div>
-                
+                                
+                                {auth.user.role == "admin" &&
                                 <div className="mt-4">
                                   <InputLabel htmlFor="task_assigned_user" value="Assigned User" />
                                   <SelectInput
@@ -178,7 +179,8 @@ export default function Edit({ auth, task, projects, users }) {
                                     
                                   </SelectInput>
                                   <InputError message={errors.assigned_user_id} className="mt-2" />
-                                </div>         
+                                </div>   
+                                }      
                 
                                 <div className="mt-4 text-right">
                                   <Link href={route('task.index')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">

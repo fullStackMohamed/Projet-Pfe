@@ -19,6 +19,6 @@ class UserMiddleware
         return $next($request);
     }
     
-    return redirect()->route('project.index');
+    return redirect()->route('dashboard2'); //pour admin
     }
 }

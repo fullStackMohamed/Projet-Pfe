@@ -50,7 +50,7 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Routes pour mees tâches
-    Route::get('/task-my-tasks', [MyTasksController::class, 'myTasks'])->name('myTasks');
+    Route::get('/task-myTasks', [MyTasksController::class, 'myTasks'])->name('myTasks');
     Route::resource('myTasks', MyTasksController::class);
 
     //Mes projets
