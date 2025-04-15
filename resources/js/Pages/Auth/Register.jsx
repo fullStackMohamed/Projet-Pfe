@@ -310,27 +310,29 @@ export default function Register() {
                                 <div className="mt-2">
                                     <div className="flex justify-between items-center mb-1">
                                         <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                            <div className={`h-full ${getPasswordStrengthColor()}`} style={{ width: `${(passwordStrength / 5) * 100}%` }}></div>
+                                            <div
+                                            className={`h-full ${getPasswordStrengthColor()}`}
+                                            style={{ width: `${(passwordStrength / 3) * 100}%` }}
+                                            >                                           
+                                            </div>
                                         </div>
-                                        <span className="ml-2 text-xs text-gray-600 dark:text-gray-400">{getPasswordStrengthText()}</span>
+                                        <span className="ml-2 text-xs text-gray-600 dark:text-gray-400">
+                                            {getPasswordStrengthText()}
+                                        </span>
                                     </div>
+                            
                                     <ul className="text-xs text-gray-500 dark:text-gray-400 mt-1 list-disc list-inside">
                                         <li className={data.password.length >= 8 ? "text-green-500 dark:text-green-400" : ""}>
-                                            At least 8 characters
-                                        </li>
-                                        <li className={/[a-z]/.test(data.password) ? "text-green-500 dark:text-green-400" : ""}>
-                                            One lowercase letter
-                                        </li>
-                                        <li className={/[A-Z]/.test(data.password) ? "text-green-500 dark:text-green-400" : ""}>
-                                            One uppercase letter
+                                                At least 8 characters
                                         </li>
                                         <li className={/[0-9]/.test(data.password) ? "text-green-500 dark:text-green-400" : ""}>
-                                            One number
+                                                At least one number
                                         </li>
                                         <li className={/[^a-zA-Z0-9]/.test(data.password) ? "text-green-500 dark:text-green-400" : ""}>
-                                            One special character
+                                                At least one symbol
                                         </li>
                                     </ul>
+
                                 </div>
                             )}
                             

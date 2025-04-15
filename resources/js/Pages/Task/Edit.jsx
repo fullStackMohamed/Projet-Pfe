@@ -22,7 +22,9 @@ export default function Edit({ auth, task, projects, users }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Données envoyées:", data);
-    
+    console.error('ID:', task.id);
+
+    if (auth.user.role == "admin") {
     // Utilisez post avec _method: 'PUT' plutôt que put() directement
     post(route('task.update', task.id), {
       forceFormData: true,  // Force l'utilisation de FormData pour les fichiers
@@ -34,6 +36,20 @@ export default function Edit({ auth, task, projects, users }) {
         console.log("Mise à jour réussie!");
       }
     });
+  }else {
+    console.log("task.id :", task.id); // 👈 ici
+
+    post(route('myTasks.update', task.id ), {
+      forceFormData: true,  // Force l'utilisation de FormData pour les fichiers
+      preserveScroll: true, // Garde la position de scroll
+      onError: (errors) => {
+        console.error("Erreurs de validation:", errors);
+      },
+      onSuccess: () => {
+        console.log("Mise à jour réussie!");
+      }
+    });
+}
   };
 
   return (
@@ -55,7 +71,8 @@ export default function Edit({ auth, task, projects, users }) {
                 <div className="mb-4">
                   <img src={task.image_path} className="w-64" alt="Task thumbnail" />
                 </div> )}
-
+                {auth.user.role == "admin" &&
+                <>
                 <div>
                                   <InputLabel htmlFor="task_project_id" value="Project" />
                                   <SelectInput
@@ -124,8 +141,10 @@ export default function Edit({ auth, task, projects, users }) {
                                     onChange={(e) => setData("due_date", e.target.value)}
                                   />
                                   <InputError message={errors.due_date} className="mt-2" />
-                                </div>
-                
+                          </div>
+                          </>
+                          }
+
                                 <div className="mt-4">
                                   <InputLabel htmlFor="task_status" value="Task Status" />
                                   <SelectInput
@@ -142,6 +161,8 @@ export default function Edit({ auth, task, projects, users }) {
                                   </SelectInput>
                                   <InputError message={errors.status} className="mt-2" />
                                 </div>
+
+                                {auth.user.role == "admin" &&
                 
                                 <div className="mt-4">
                                   <InputLabel htmlFor="task_priority" value="Task Priority" />
@@ -159,6 +180,7 @@ export default function Edit({ auth, task, projects, users }) {
                                   </SelectInput>
                                   <InputError message={errors.priority} className="mt-2" />
                                 </div>
+                                }
                                 
                                 {auth.user.role == "admin" &&
                                 <div className="mt-4">
@@ -186,8 +208,8 @@ export default function Edit({ auth, task, projects, users }) {
                                   <Link href={route('task.index')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">
                                     Cancel
                                   </Link>
-                                  <button className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
-                                    Submit
+                                  <button type="submit" className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
+                                    Update Task
                                   </button>
                                 </div>
                                 

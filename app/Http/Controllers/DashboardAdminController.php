@@ -8,7 +8,7 @@ use App\Models\Project;
 use App\Models\User;
 
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\DB;
 
 class DashboardAdminController extends Controller
 {
@@ -16,9 +16,14 @@ class DashboardAdminController extends Controller
 
 public function index()
 {
-    $totalProjects = Project::count();
+    //$totalProjects = Project::count(); //methode 1
     $totalTasks = Task::count();
     $totalUsers = User::count();
+
+    // Appel de la procédure pour obtenir le nombre total de projets methode 2 appel procedure
+    $result = DB::select("CALL CountProjects()");
+    // Le résultat est un tableau, donc on récupère le champ total_projects
+    $totalProjects = $result[0]->total_projects;
     
     $totalPendingTasks = Task::where('status', 'pending')->count();
     $totalProgressTasks = Task::where('status', 'in_progress')->count();

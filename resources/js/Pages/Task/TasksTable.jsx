@@ -191,7 +191,9 @@ export default function TasksTable({tasks, success, queryParams=null, hideProjec
                                                    Edit
                                             </Link>
                                             } 
-                                                  
+
+                                            {
+                                            auth.user.role === 'admin' && 
                                                 <button 
                                                 onClick={(e) => deleteTask(task)}
                                                 className="font-medium text-red-600 
@@ -199,6 +201,7 @@ export default function TasksTable({tasks, success, queryParams=null, hideProjec
                                                 >
                                                     Delete
                                                 </button>
+                                            }
                                                 
                                             
                                             </td>

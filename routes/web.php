@@ -15,10 +15,12 @@ use App\Http\Controllers\DashboardAdminController;
 
 use App\Http\Middleware\AdminMiddleware;
 
+use App\Http\Controllers\ReportController;
+
 
 // Redirection de la racine vers le tableau de bord
 Route::get('/', function(){
-    return Inertia::render('Welcome');
+    return Inertia::render('Auth/Login');
 });
 
 // Routes pour utilisateurs authentifiés et vérifiés
@@ -57,6 +59,13 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('myProjects', [MyProjectsController::class, 'myProjects'])->name('myProjects');
 
 
+});
+
+
+// Routes pour les rapports PDF
+Route::middleware(['auth'])->group(function () {
+    // Téléchargement de PDFs
+    Route::get('/reports/all-projects', [ReportController::class, 'generateAllProjectsReport'])->name('reports.all.download');
 });
 
 // Inclusion des routes d'authentification

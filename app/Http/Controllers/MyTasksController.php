@@ -89,13 +89,13 @@ class MyTasksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit(Task $myTask)
     {
         $projects = Project::query()->orderBy('name', 'asc')->get();
         $users = User::query()->orderBy('name', 'asc')->get();
 
         return Inertia("Task/Edit", [
-            'task' => new TaskResource($task),
+            'task' => new TaskResource($myTask),
             'projects' => ProjectResource::collection($projects),
             'users' => UserResource::collection($users),
         ]);
@@ -104,36 +104,36 @@ class MyTasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request, Task $myTask)
     {
          // Les données sont déjà validées par UpdateTaskRequest
     $data = $request->validated();
     
     // Mise à jour des informations de base
     $updateData = [
-        'name' => $data['name'],
-        'description' => $data['description'],
+        // 'name' => $data['name'],
+        // 'description' => $data['description'],
         'status' => $data['status'],
-        'due_date' => $data['due_date'],
+        // 'due_date' => $data['due_date'],
         'updated_by' => Auth::id(),
     ];
     
     // Traitement de l'image si présente
-    if ($request->hasFile('image')) {
-        // Suppression de l'ancienne image si elle existe
-        if ($task->image_path) {
-            Storage::disk('public')->deleteDirectory(dirname($task->image_path));
-        }
+    // if ($request->hasFile('image')) {
+    //     // Suppression de l'ancienne image si elle existe
+    //     if ($task->image_path) {
+    //         Storage::disk('public')->deleteDirectory(dirname($task->image_path));
+    //     }
         
         // Stockage de la nouvelle image
-        $updateData['image_path'] = $request->file('image')->store('task/'.Str::random(), 'public');
-    }
+        // $updateData['image_path'] = $request->file('image')->store('task/'.Str::random(), 'public');
+    // }
     
     // Mise à jour du projet
-    $task->update($updateData);
+    $myTask->update($updateData);
     
     // Redirection avec message de succès
-    return to_route('task.index')->with('success', "Task \"{$task->name}\" was updated successfully");
+    return to_route('myTasks.index')->with('success', "Task \"{$myTask->name}\" was updated successfully");
     }
 
     /**

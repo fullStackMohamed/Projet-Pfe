@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+use App\Notifications\UserTaskNotification;
+
 class TaskController extends Controller
 {
     /**
@@ -48,7 +50,7 @@ class TaskController extends Controller
     public function create()
     {
         $projects = Project::query()->orderBy('name', 'asc')->get();
-        $users = User::query()->orderBy('name', 'asc')->get();
+        $users = User::query()->where('role', '!=', 'admin')->orderBy('name', 'asc')->get();
 
         return Inertia("Task/Create", [
             'projects' => ProjectResource::collection($projects),
@@ -62,6 +64,7 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
+
         $data = $request->validated();
         /** @var $image Illuminate\Http\UploadedFile*/
         $image = $data['image'] ?? null;
@@ -70,7 +73,17 @@ class TaskController extends Controller
         if ($image){
             $data['image_path'] = $image->store('task/'.Str::random(), 'public');
         }
-        Task::create($data);
+        $task = Task::create($data);
+
+        $user = User::find($request->assigned_user_id);  // Récupérer l'utilisateur auquel assigner la tâche
+
+        $data = [
+        'subject' => 'Nouvelle tâche assignée',
+        'message' => 'Vous avez une nouvelle tâche à accomplir.',
+        'task_id' => $task->id,  // L'ID de la tâche assignée
+        ];
+        // Envoyer la notification
+        $user->notify(new UserTaskNotification($data));
 
         return to_route('task.index')->with('success', 'Task was created');
     }
@@ -91,8 +104,11 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         $projects = Project::query()->orderBy('name', 'asc')->get();
-        $users = User::query()->orderBy('name', 'asc')->get();
-
+        $users = User::query()
+        ->where('role', '!=', 'admin')
+        ->orderBy('name', 'asc')
+        ->get();
+    
         return Inertia("Task/Edit", [
             'task' => new TaskResource($task),
             'projects' => ProjectResource::collection($projects),
@@ -130,6 +146,17 @@ class TaskController extends Controller
     
     // Mise à jour du projet
     $task->update($updateData);
+
+    //code pour notification
+    $user = User::find($request->assigned_user_id);  // Récupérer l'utilisateur auquel assigner la tâche
+
+    $data = [
+    'subject' => 'Nouvelle tâche assignée',
+    'message' => 'Vous avez une nouvelle tâche à accomplir.',
+    'task_id' => $task->id,  // L'ID de la tâche assignée
+    ];
+    // Envoyer la notification
+    $user->notify(new UserTaskNotification($data));
     
     // Redirection avec message de succès
     return to_route('task.index')->with('success', "Task \"{$task->name}\" was updated successfully");

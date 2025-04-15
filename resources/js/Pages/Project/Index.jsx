@@ -59,15 +59,19 @@ export default function Index({auth, projects, queryParams = null,
                     <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
                         Projects                       
                     </h2>
+
+                    {
+                        auth.user.role === 'admin' &&
                     <Link href={route("project.create")} className="bg-emerald-500 py-1 px-3 text-white rounded
                     shadow transition-all hover:bg-emerald-600">
                         Add new
                     </Link>
+                }
                 </div>  
             }
             >
             
-            <Head title="Projects" />
+            <Head title="Projects"/>
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 { success && (
@@ -104,7 +108,11 @@ export default function Index({auth, projects, queryParams = null,
                                               Due Date
                                            </TableHeading>
                                             <th className="px-3 py-3">Created By</th>
+
+                                            {
+                                                auth.user.role === 'admin' &&
                                             <th className="px-3 py-3">Actions</th>
+                                            }
                                         </tr>
                                     </thead>
                             <thead className="text-xs text-gray-700 uppercase 
@@ -136,10 +144,14 @@ export default function Index({auth, projects, queryParams = null,
                                         <th className="px-3 py-3"></th>
                                         <th className="px-3 py-3"></th>
                                         <th className="px-3 py-3"></th>
+
+                                        {
+                                            auth.user.role === 'admin' &&
                                         <th className="px-3 py-3"></th>
+                                        }
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>             
                                     {projects.data.map((project) => (
                                         <tr className="bg-white border-b dark:bg-gray-800
                                         dark:border-gray-700" key={project.id}>
@@ -163,7 +175,11 @@ export default function Index({auth, projects, queryParams = null,
                                             <td className="px-3 py-2 text-nowrap">{project.created_at}</td>
                                             <td className="px-3 py-2 text-nowrap">{project.due_date}</td>
                                             <td className="px-3 py-2">{project.createdBy.name}</td>
+
+                                            {
+                                                auth.user.role === 'admin' &&
                                             <td className="px-3 py-2 text-nowrap">
+                           
                                             <Link href={route('project.edit', project.id)}
                                                 className="font-medium text-blue-600 
                                                 dark:text-blue-500 hover:underline mx-1"
@@ -180,7 +196,8 @@ export default function Index({auth, projects, queryParams = null,
                                                     Delete
                                                 </button>
                                             </td>
-
+                                        }
+                                             
                                     </tr>
                                     ))}
                                     

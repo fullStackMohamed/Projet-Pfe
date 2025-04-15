@@ -9,3 +9,13 @@ export default function ApplicationLogo(props) {
         </svg>
     );
 }
+
+// export default function ApplicationLogo(props) {
+//     return (
+//         <img
+//             {...props}
+//             src="/storage/logoApp/logoTaskManagement.png"
+//             alt="Logo Task Management"
+//         />
+//     );
+// }
