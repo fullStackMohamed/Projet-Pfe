@@ -26,7 +26,7 @@ Route::get('/', function(){
 // Routes pour utilisateurs authentifiés et vérifiés
 Route::middleware(['auth', 'admin'])->group(function() {
     // Tableau de bord
-    Route::get('/dashboard2', [DashboardAdminController::class, 'index'])->name('dashboard2');
+    Route::get('/dashboard2', [DashboardAdminController::class, 'index2'])->name('dashboard2');
     
     // Routes pour projets
     Route::resource('project', ProjectController::class);
@@ -67,6 +67,16 @@ Route::middleware(['auth'])->group(function () {
     // Téléchargement de PDFs
     Route::get('/reports/all-projects', [ReportController::class, 'generateAllProjectsReport'])->name('reports.all.download');
 });
+
+//pour multi-langues
+Route::get('/lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'fr'])) {
+        abort(400);
+    }
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return Redirect::back();
+})->name('lang.switch');
 
 // Inclusion des routes d'authentification
 require __DIR__.'/auth.php';

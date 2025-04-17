@@ -244,6 +244,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import LanguageSwitcher from '@/Pages/Langue/LanguageSwitcher';
 
 export default function AuthenticatedLayout({ header, children }) {
     const { auth } = usePage().props;
@@ -327,6 +328,8 @@ export default function AuthenticatedLayout({ header, children }) {
                                     {link.name}
                                 </Link>
                             ))}
+
+                            <LanguageSwitcher />
                         </div>
 
                         {/* User Menu (Desktop) */}
