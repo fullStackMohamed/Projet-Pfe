@@ -41,6 +41,7 @@ class TaskController extends Controller
             "tasks" => TaskResource::collection($tasks),
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
+            'translations' => __('task'),
         ]);
     }
 

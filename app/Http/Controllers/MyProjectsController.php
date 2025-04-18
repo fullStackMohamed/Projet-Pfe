@@ -211,6 +211,8 @@ class MyProjectsController extends Controller
             "projects" => ProjectResource::collection($projects),
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
+            'translations' => __('project'),
+
         ]);
     }
 }

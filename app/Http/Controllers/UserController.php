@@ -34,6 +34,7 @@ class UserController extends Controller
             "users" => UserCrudResource::collection($users),
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
+            'translations' => __('user'),
         ]);
     }
 
@@ -42,8 +43,17 @@ class UserController extends Controller
      */
     public function create()
     {
-        return Inertia('User/Create');
-
+        return Inertia('User/Create',  [
+            'translations' => [
+                'create_title' => __('createUser.create_title'),
+                'name' => __('createUser.name'),
+                'email' => __('createUser.email'),
+                'password' => __('createUser.password'),
+                'confirmation_password' => __('createUser.confirmation_password'),
+                'submit' => __('createUser.submit'),
+                'cancel' => __('createUser.cancel'),
+            ],
+        ]);
     }
 
     /**

@@ -168,7 +168,7 @@ import InputError from '@/Components/InputError';
 import TextAreaInput from '@/Components/TextAreaInput';
 import SelectInput from '@/Components/SelectInput';
 
-export default function Edit({ auth, project }) {
+export default function Edit({ auth, project, translations }) {
   const { data, setData, post, errors, processing } = useForm({
     _method: 'PUT',  // Simule une requête PUT avec FormData
     image: null,
@@ -199,7 +199,7 @@ export default function Edit({ auth, project }) {
     <AuthenticatedLayout user={auth.user} header={
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-          Edit project "{project.name}"
+          {/* Edit project*/} {translations.edit_title} "{project.name}" 
         </h2>
       </div>
     }>

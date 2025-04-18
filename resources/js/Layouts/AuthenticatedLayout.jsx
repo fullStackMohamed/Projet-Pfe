@@ -298,6 +298,7 @@ export default function AuthenticatedLayout({ header, children }) {
         { name: 'Users', href: route('user.index'), active: route().current('user.index') }
     ];
 
+
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             <nav className={`fixed w-full z-10 transition-all duration-300 ${

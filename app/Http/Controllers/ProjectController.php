@@ -39,6 +39,8 @@ class ProjectController extends Controller
             "projects" => ProjectResource::collection($projects),
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
+            'translations' => __('project'),
+
         ]);
     }
 
@@ -48,7 +50,23 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return Inertia('Project/Create');
+        return Inertia('Project/Create',[
+            'translations' => [
+                'create_title' => __('createProject.create_title'),
+                'new_project' => __('createProject.new_project'),
+                'image' => __('createProject.image'),
+                'name' => __('createProject.name'),
+                'description' => __('createProject.description'),
+                'due_date' => __('createProject.due_date'),
+                'status' => __('createProject.status'),
+                'select_status' => __('createProject.select_status'),
+                'pending' => __('createProject.pending'),
+                'in_progress' => __('createProject.in_progress'),
+                'completed' => __('createProject.completed'),
+                'cancel' => __('createProject.cancel'),
+                'submit' => __('createProject.submit'),
+            ]
+        ]);
     }
 
     /**
@@ -102,6 +120,7 @@ class ProjectController extends Controller
     {
         return inertia('Project/Edit', [
             'project' => new ProjectResource($project),
+            'translations' => __('editProject'),
         ]);
     }
 
