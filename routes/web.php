@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
 
 //pour multi-langues
 Route::get('/lang/{locale}', function ($locale) {
-    if (!in_array($locale, ['en', 'fr'])) {
+    if (!in_array($locale, ['en', 'fr', 'ar'])) {
         abort(400);
     }
     Session::put('locale', $locale);

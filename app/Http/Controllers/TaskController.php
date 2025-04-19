@@ -56,6 +56,7 @@ class TaskController extends Controller
         return Inertia("Task/Create", [
             'projects' => ProjectResource::collection($projects),
             'users' => UserResource::collection($users),
+            'translations' => __('createTask'),
         ]);
 
     }
@@ -114,6 +115,7 @@ class TaskController extends Controller
             'task' => new TaskResource($task),
             'projects' => ProjectResource::collection($projects),
             'users' => UserResource::collection($users),
+            'translations' => __('editTask'),
         ]);
     }
 

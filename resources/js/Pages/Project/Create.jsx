@@ -193,8 +193,8 @@ export default function Create({ auth, translations }) {
         </h2>
       </div>
     }>
-      <Head title="New Project" />
-      {/* <Head title={translations.new_project} /> */}
+      {/* <Head title="New Project" /> */}
+      <Head title={translations.new_project} />
       <div className="py-12">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">

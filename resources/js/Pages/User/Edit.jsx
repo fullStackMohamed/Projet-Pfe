@@ -5,7 +5,7 @@ import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 
 
-export default function Edit({ auth, user }) {
+export default function Edit({ auth, user, translations }) {
   const { data, setData, post, errors, processing } = useForm({
     _method: 'PUT',  // Simule une requête PUT avec FormData
     name: user.name || "",
@@ -35,11 +35,12 @@ export default function Edit({ auth, user }) {
     <AuthenticatedLayout user={auth.user} header={
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-          Edit user "{user.name}"
+          {/* Edit user "{user.name}" */}  {translations.edit_title} "{user.name}"
         </h2>
       </div>
     }>
-      <Head title="Edit User" />
+      {/* <Head title="Edit User" /> */}
+      <Head title={translations.edit_title} />
       <div className="py-12">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
@@ -49,7 +50,7 @@ export default function Edit({ auth, user }) {
                 
 
               <div className="mt-4">
-                              <InputLabel htmlFor="user_name" value="User Name" />
+                              <InputLabel htmlFor="user_name" value={translations.name} /> {/*value="User Name"*/}
                                 <TextInput 
                                   id="user_name" 
                                   type="text"
@@ -63,7 +64,7 @@ export default function Edit({ auth, user }) {
                               </div>
               
                               <div className="mt-4">
-                                <InputLabel htmlFor="user_email" value="User Email" />
+                                <InputLabel htmlFor="user_email" value={translations.email} /> {/*value="User Email"*/}
                                 <TextInput 
                                   id="user_email" 
                                   type="text"
@@ -76,7 +77,7 @@ export default function Edit({ auth, user }) {
                               </div>      
               
                                <div className="mt-4">
-                                <InputLabel htmlFor="user_password" value="User Password" />
+                                <InputLabel htmlFor="user_password" value={translations.password}/> {/*value="User Password"*/}
                                 <TextInput 
                                   id="user_password"
                                   type="password"
@@ -89,7 +90,7 @@ export default function Edit({ auth, user }) {
                               </div>   
 
                               <div className="mt-4">
-                                <InputLabel htmlFor="user_password_confirmation" value="Confirmation Password" />
+                                <InputLabel htmlFor="user_password_confirmation" value={translations.password_confirmation} /> {/*value="Confirmation Password"*/}
                                 <TextInput 
                                   id="user_password_confirmation"
                                   type="password"
@@ -103,14 +104,15 @@ export default function Edit({ auth, user }) {
 
                 <div className="mt-4 text-right">
                   <Link href={route('user.index')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">
-                    Cancel
+                    {/* Cancel */} {translations.cancel}
                   </Link>
                   <button 
                     type="submit"
                     disabled={processing}
                     className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600 disabled:opacity-50"
                   >
-                    {processing ? 'Updating...' : 'Update User'}
+                    {/* {processing ? 'Updating...' : 'Update User'} */}
+                    {processing ? translations.updating_button : translations.update_button}
                   </button>
                 </div>
               </form>

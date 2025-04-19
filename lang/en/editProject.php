@@ -2,8 +2,6 @@
 
 return [
     'edit_title' => 'Edit Project',
-    'create_title' => 'Create New Project',
-    'new_project' => 'New Project',
     'image' => 'Project Image',
     'name' => 'Project Name',
     'description' => 'Project Description',
@@ -14,6 +12,6 @@ return [
     'in_progress' => 'In Progress',
     'completed' => 'Completed',
     'cancel' => 'Cancel',
-    'submit' => 'Submit',
-    'update' => 'Update',
+    'update_button' => 'Update Project',
+    'updating_button' => 'Updating...',
 ];

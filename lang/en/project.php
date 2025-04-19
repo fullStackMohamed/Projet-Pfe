@@ -3,6 +3,8 @@
 return [
     'projects' => 'Projects',
     'add_new' => 'Add new',
+    'id' => 'Id',
+    'image' => 'Image',
     'name' => 'Name',
     'status' => 'Status',
     'create_date' => 'Create Date',

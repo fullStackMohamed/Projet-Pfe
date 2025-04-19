@@ -203,7 +203,9 @@ export default function Edit({ auth, project, translations }) {
         </h2>
       </div>
     }>
-      <Head title="Edit Project" />
+      {/* <Head title="Edit Project" /> */}
+      <Head title={translations.edit_title} />
+
       <div className="py-12">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
@@ -216,7 +218,7 @@ export default function Edit({ auth, project, translations }) {
                 </div> )}
 
                 <div>
-                  <InputLabel htmlFor="project_image_path" value="Project Image" />
+                  <InputLabel htmlFor="project_image_path" value={translations.image} /> {/*value="Project Image"*/}
                   <TextInput 
                     id="project_image_path" 
                     type="file" 
@@ -228,7 +230,7 @@ export default function Edit({ auth, project, translations }) {
                 </div>
                 
                 <div className="mt-4">
-                  <InputLabel htmlFor="project_name" value="Project Name" />
+                  <InputLabel htmlFor="project_name" value={translations.name} /> {/*value="Project Name"*/}
                   <TextInput 
                     id="project_name" 
                     type="text"
@@ -242,7 +244,7 @@ export default function Edit({ auth, project, translations }) {
                 </div>
                 
                 <div className="mt-4">
-                  <InputLabel htmlFor="project_description" value="Project Description" />
+                  <InputLabel htmlFor="project_description" value={translations.description} /> {/*value="Project Description"*/}
                   <TextAreaInput 
                     id="project_description" 
                     name="description" 
@@ -254,7 +256,7 @@ export default function Edit({ auth, project, translations }) {
                 </div>
 
                 <div className="mt-4">
-                  <InputLabel htmlFor="project_due_date" value="Project Deadline" />
+                  <InputLabel htmlFor="project_due_date" value={translations.due_date}/> {/*value="Project Deadline"*/}
                   <TextInput 
                     id="project_due_date"
                     type="date" 
@@ -267,7 +269,7 @@ export default function Edit({ auth, project, translations }) {
                 </div>
 
                 <div className="mt-4">
-                  <InputLabel htmlFor="project_status" value="Project Status" />
+                  <InputLabel htmlFor="project_status" value={translations.status} /> {/*value="Project Status"*/}
                   <SelectInput
                     name="status"
                     id="project_status" 
@@ -275,24 +277,25 @@ export default function Edit({ auth, project, translations }) {
                     value={data.status}
                     onChange={(e) => setData("status", e.target.value)}
                   >
-                    <option value="">Select Status</option>
-                    <option value="pending">Pending</option>
-                    <option value="in_progress">In Progress</option>
-                    <option value="completed">Completed</option>
+                    <option value="">{/*Select Status*/} {translations.select_status}</option>
+                    <option value="pending">{/*Pending*/} {translations.pending}</option>
+                    <option value="in_progress">{/*In Progress*/} {translations.in_progress}</option>
+                    <option value="completed">{/*Completed*/} {translations.completed}</option>
                   </SelectInput>
                   <InputError message={errors.status} className="mt-2" />
                 </div>
 
                 <div className="mt-4 text-right">
                   <Link href={route('project.index')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">
-                    Cancel
+                    {/* Cancel */} {translations.cancel}
                   </Link>
                   <button 
                     type="submit"
                     disabled={processing}
                     className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600 disabled:opacity-50"
                   >
-                    {processing ? 'Updating...' : 'Update Project'}
+                    {/* {processing ? 'Updating...' : 'Update Project'} */}
+                    {processing ? translations.updating_button : translations.update_button}
                   </button>
                 </div>
               </form>

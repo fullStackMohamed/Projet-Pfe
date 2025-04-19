@@ -306,10 +306,10 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
                                 sort_direction={queryParams.sort_direction} 
                                 sortChanged={sortChanged}
                             >
-                                ID
+                                {/* ID */} {translations.id}
                             </TableHeading>
                             
-                            <th className="px-4 py-3">Image</th>
+                            <th className="px-4 py-3">{/*Image*/} {translations.image}</th>
                             
                             {!hideProjectColumn && (
                                 <th className="px-4 py-3">{/*Project Name*/} {translations.project_name} </th>

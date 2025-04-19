@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'edit_title' => 'Modifier la tâche',
+    'project' => 'Projet',
+    'task_image' => 'Image de la tâche',
+    'task_name' => 'Nom de la tâche',
+    'task_description' => 'Description de la tâche',
+    'task_deadline' => 'Date limite de la tâche',
+    'task_status' => 'Statut de la tâche',
+    'select_status' => 'Sélectionner le statut',
+    'pending' => 'En attente',
+    'in_progress' => 'En cours',
+    'completed' => 'Terminée',
+    'select_project' => 'Sélectionnez un projet',
+    'select_priority' => 'Sélectionnez une priorité',
+    'task_priority' => 'Priorité de la tâche',
+    'low' => 'Faible',
+    'medium' => 'Moyenne',
+    'high' => 'Haute',
+    'assigned_user' => 'Utilisateur assigné',
+    'select_user' => 'Sélectionner un utilisateur',
+    'cancel' => 'Annuler',
+    'update_button' => 'Mettre à jour',
+    'updating_button' => 'Mise à jour...',
+];

@@ -6,7 +6,7 @@ import InputError from '@/Components/InputError';
 import TextAreaInput from '@/Components/TextAreaInput';
 import SelectInput from '@/Components/SelectInput';
 
-export default function Edit({ auth, task, projects, users }) {
+export default function Edit({ auth, task, projects, users, translations }) {
   const { data, setData, post, errors, processing } = useForm({
     _method: 'PUT',  // Simule une requête PUT avec FormData
     image: null,
@@ -56,11 +56,13 @@ export default function Edit({ auth, task, projects, users }) {
     <AuthenticatedLayout user={auth.user} header={
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-          Edit task "{task.name}"
+          {/* Edit task "{task.name}" */} 
+          {translations.edit_title} "{task.name}"
         </h2>
       </div>
     }>
-      <Head title="Edit Task" />
+      {/* <Head title="Edit Task" /> */}
+      <Head title={translations.edit_title} />
       <div className="py-12">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
@@ -74,7 +76,7 @@ export default function Edit({ auth, task, projects, users }) {
                 {auth.user.role == "admin" &&
                 <>
                 <div>
-                                  <InputLabel htmlFor="task_project_id" value="Project" />
+                                  <InputLabel htmlFor="task_project_id" value={translations.project} /> {/*value="Project"*/}
                                   <SelectInput
                                     name="project_id"
                                     id="task_project_id" 
@@ -82,7 +84,7 @@ export default function Edit({ auth, task, projects, users }) {
                                     className="mt-1 block w-full"
                                     onChange={(e) => setData("project_id", e.target.value)}
                                   >
-                                    <option value="">Select Project</option>
+                                    <option value="">{/*Select Project*/} {translations.select_project} </option>
                                     {projects.data.map(project => (
                                         <option value={project.id} key={project.id}>
                                               {project.name}
@@ -93,7 +95,7 @@ export default function Edit({ auth, task, projects, users }) {
                                 </div>
                 
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_image_path" value="Task Image" />
+                                  <InputLabel htmlFor="task_image_path" value={translations.task_image} /> {/*value="Task Image"*/} 
                                   <TextInput 
                                     id="task_image_path" 
                                     type="file" 
@@ -105,7 +107,7 @@ export default function Edit({ auth, task, projects, users }) {
                                 </div>
                                 
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_name" value="Task Name" />
+                                  <InputLabel htmlFor="task_name" value={translations.task_name} /> {/*value="Task Name"*/}
                                   <TextInput 
                                     id="task_name" 
                                     type="text"
@@ -119,7 +121,7 @@ export default function Edit({ auth, task, projects, users }) {
                                 </div>
                                 
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_description" value="Task Description" />
+                                  <InputLabel htmlFor="task_description" value={translations.task_description} /> {/*value="Task Description"*/}
                                   <TextAreaInput 
                                     id="task_description" 
                                     name="description" 
@@ -131,7 +133,7 @@ export default function Edit({ auth, task, projects, users }) {
                                 </div>
                 
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_due_date" value="Task Deadline" />
+                                  <InputLabel htmlFor="task_due_date" value={translations.task_deadline} /> {/*value="Task Deadline"*/}
                                   <TextInput 
                                     id="task_due_date"
                                     type="date" 
@@ -146,7 +148,7 @@ export default function Edit({ auth, task, projects, users }) {
                           }
 
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_status" value="Task Status" />
+                                  <InputLabel htmlFor="task_status" value={translations.task_status} /> {/*value="Task Status"*/}
                                   <SelectInput
                                     name="status"
                                     id="task_status" 
@@ -154,10 +156,10 @@ export default function Edit({ auth, task, projects, users }) {
                                     className="mt-1 block w-full"
                                     onChange={(e) => setData("status", e.target.value)}
                                   >
-                                    <option value="">Select Status</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="in_progress">In Progress</option>
-                                    <option value="completed">Completed</option>
+                                    <option value="">{/*Select Status*/} {translations.select_status}</option>
+                                    <option value="pending">{/*Pending*/} {translations.pending}</option>
+                                    <option value="in_progress">{/*In Progress*/} {translations.in_progress}</option>
+                                    <option value="completed">{/*Completed*/} {translations.completed}</option>
                                   </SelectInput>
                                   <InputError message={errors.status} className="mt-2" />
                                 </div>
@@ -165,7 +167,7 @@ export default function Edit({ auth, task, projects, users }) {
                                 {auth.user.role == "admin" &&
                 
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_priority" value="Task Priority" />
+                                  <InputLabel htmlFor="task_priority" value={translations.task_priority} /> {/*value="Task Priority"*/}
                                   <SelectInput
                                     name="priority"
                                     id="task_priority" 
@@ -173,10 +175,10 @@ export default function Edit({ auth, task, projects, users }) {
                                     className="mt-1 block w-full"
                                     onChange={(e) => setData("priority", e.target.value)}
                                   >
-                                    <option value="">Select Priority</option>
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
+                                    <option value="">{/*Select Priority*/} {translations.select_priority} </option>
+                                    <option value="low">{/*Low*/} {translations.low}</option>
+                                    <option value="medium">{/*Medium*/} {translations.medium}</option>
+                                    <option value="high">{/*High*/} {translations.high}</option>
                                   </SelectInput>
                                   <InputError message={errors.priority} className="mt-2" />
                                 </div>
@@ -184,7 +186,7 @@ export default function Edit({ auth, task, projects, users }) {
                                 
                                 {auth.user.role == "admin" &&
                                 <div className="mt-4">
-                                  <InputLabel htmlFor="task_assigned_user" value="Assigned User" />
+                                  <InputLabel htmlFor="task_assigned_user" value={translations.assigned_user} /> {/*value="Assigned User"*/}
                                   <SelectInput
                                     name="assigned_user_id"
                                     id="task_assigned_user" 
@@ -192,7 +194,7 @@ export default function Edit({ auth, task, projects, users }) {
                                     className="mt-1 block w-full"
                                     onChange={(e) => setData("assigned_user_id", e.target.value)}
                                   >
-                                    <option value="">Select User</option>
+                                    <option value="">{/*Select User*/} {translations.select_user}</option>
                                     {users.data.map(user => (
                                         <option value={user.id} key={user.id}>
                                               {user.name}
@@ -206,10 +208,11 @@ export default function Edit({ auth, task, projects, users }) {
                 
                                 <div className="mt-4 text-right">
                                   <Link href={route('task.index')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">
-                                    Cancel
+                                    {/* Cancel */} {translations.cancel}
                                   </Link>
                                   <button type="submit" className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
-                                    Update Task
+                                    {/* Update Task */}
+                                    {processing ? translations.updating_button : translations.update_button}
                                   </button>
                                 </div>
                                 

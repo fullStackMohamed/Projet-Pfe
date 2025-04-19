@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'edit_title' => 'تعديل المهمة',
+    'project' => 'المشروع',
+    'task_image' => 'صورة المهمة',
+    'task_name' => 'اسم المهمة',
+    'task_description' => 'وصف المهمة',
+    'task_deadline' => 'الموعد النهائي للمهمة',
+    'task_status' => 'حالة المهمة',
+    'select_status' => 'اختر الحالة',
+    'pending' => 'قيد الانتظار',
+    'in_progress' => 'قيد التنفيذ',
+    'completed' => 'مكتملة',
+    'select_project' => 'اختر مشروعًا',
+    'select_priority' => 'اختر أولوية',
+    'task_priority' => 'أولوية المهمة',
+    'low' => 'منخفضة',
+    'medium' => 'متوسطة',
+    'high' => 'مرتفعة',
+    'assigned_user' => 'المستخدم المخصص',
+    'select_user' => 'اختر مستخدمًا',
+    'cancel' => 'إلغاء',
+    'update_button' => 'تحديث',
+    'updating_button' => 'جارٍ التحديث...',
+];

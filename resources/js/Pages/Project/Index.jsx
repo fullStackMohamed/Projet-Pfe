@@ -311,10 +311,10 @@ export default function Index({auth, projects, queryParams = null,
                             <thead className="text-xs font-medium text-slate-700 uppercase bg-slate-100 dark:bg-slate-700 dark:text-slate-300 border-b border-slate-300 dark:border-slate-600">
                                         <tr className="text-nowrap">
                                            <TableHeading name="id" sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} sortChanged={sortChanged} >
-                                              ID
+                                              {/* ID */} {translations.id}
                                            </TableHeading>
 
-                                            <th className="px-4 py-3">Image</th>
+                                            <th className="px-4 py-3">{/*Image*/} {translations.image}</th>
                                             <TableHeading name="name" sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} sortChanged={sortChanged} >
                                               {/*Name*/} {translations.name}
                                             </TableHeading>

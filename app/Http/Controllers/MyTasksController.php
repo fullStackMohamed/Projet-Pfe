@@ -98,6 +98,7 @@ class MyTasksController extends Controller
             'task' => new TaskResource($myTask),
             'projects' => ProjectResource::collection($projects),
             'users' => UserResource::collection($users),
+            'translations' => __('editTask'),
         ]);
     }
 

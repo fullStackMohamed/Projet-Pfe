@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'create_title' => 'Create new Task',
+    'page_title' => 'New Task',
+    'project' => 'Project',
+    'task_image' => 'Task Image',
+    'task_name' => 'Task Name',
+    'task_description' => 'Task Description',
+    'task_deadline' => 'Task Deadline',
+    'task_status' => 'Task Status',
+    'task_priority' => 'Task Priority',
+    'assigned_user' => 'Assigned User',
+    'select_status' => 'Select Status',
+    'pending' => 'Pending',
+    'in_progress' => 'In Progress',
+    'completed' => 'Completed',
+    'select_project' => 'Select Project',
+    'select_priority' => 'Select Priority',
+    'low' => 'Low',
+    'medium' => 'Medium',
+    'high' => 'High',
+    'select_user' => 'Select User',
+    'cancel' => 'Cancel',
+    'submit' => 'Submit',
+];

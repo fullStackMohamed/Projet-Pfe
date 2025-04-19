@@ -46,6 +46,7 @@ class UserController extends Controller
         return Inertia('User/Create',  [
             'translations' => [
                 'create_title' => __('createUser.create_title'),
+                'new_user' => __('createUser.new_user'),
                 'name' => __('createUser.name'),
                 'email' => __('createUser.email'),
                 'password' => __('createUser.password'),
@@ -84,6 +85,7 @@ class UserController extends Controller
     {
         return inertia('User/Edit', [
             'user' => new UserCrudResource($user),
+            'translations' => __('editUser'),
         ]);
     }
 

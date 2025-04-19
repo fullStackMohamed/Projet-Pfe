@@ -2,8 +2,6 @@
 
 return [
     'edit_title' => 'Modifier le projet',
-    'create_title' => 'Créer un nouveau projet',
-    'new_project' => 'Nouveau projet',
     'image' => 'Image du projet',
     'name' => 'Nom du projet',
     'description' => 'Description du projet',
@@ -14,6 +12,6 @@ return [
     'in_progress' => 'En cours',
     'completed' => 'Terminé',
     'cancel' => 'Annuler',
-    'submit' => 'Valider',
-    'update' => 'Mettre à jour',
+    'update_button' => 'Mettre à jour',
+    'updating_button' => 'Mise à jour...',
 ];
