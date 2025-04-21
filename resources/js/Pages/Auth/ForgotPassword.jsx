@@ -66,7 +66,7 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, useForm } from '@inertiajs/react';
 
-export default function ForgotPassword({ status }) {
+export default function ForgotPassword({ status, trans_forgot }) {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
     });
@@ -79,14 +79,18 @@ export default function ForgotPassword({ status }) {
     return (
         <GuestLayout>
             <Head title="Forgot Password" />
+            <Head title={trans_forgot.title} />
+
 
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="text-center">
                     <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">
-                        Forgot your password?
+                        {/* Forgot your password? */}
+                        {trans_forgot.title_form}
                     </h2>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        Enter your email and we'll send you a reset link.
+                        {/* Enter your email and we'll send you a reset link. */}
+                        {trans_forgot.subtitle}
                     </p>
                 </div>
             </div>
@@ -111,7 +115,7 @@ export default function ForgotPassword({ status }) {
                     <form onSubmit={submit} className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Email address
+                                {/* Email address */} {trans_forgot.email_label}
                             </label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -126,7 +130,8 @@ export default function ForgotPassword({ status }) {
                                     name="email"
                                     value={data.email}
                                     className="pl-10 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                                    placeholder="your@email.com"
+                                    // placeholder="your@email.com"
+                                    placeholder={trans_forgot.email_placeholder}
                                     isFocused={true}
                                     onChange={(e) => setData('email', e.target.value)}
                                     required
@@ -140,7 +145,8 @@ export default function ForgotPassword({ status }) {
                                 className="w-full justify-center py-2.5"
                                 disabled={processing}
                             >
-                                {processing ? 'Sending...' : 'Send Reset Link'}
+                                {/* {processing ? 'Sending...' : 'Send Reset Link'} */}
+                                {processing ? trans_forgot.sending : trans_forgot.send_button}
                             </PrimaryButton>
                         </div>
 
@@ -149,7 +155,7 @@ export default function ForgotPassword({ status }) {
                                 href={route('login')}
                                 className="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
                             >
-                                Back to login
+                                {/* Back to login */} {trans_forgot.back_to_login}
                             </a>
                         </div>
                     </form>

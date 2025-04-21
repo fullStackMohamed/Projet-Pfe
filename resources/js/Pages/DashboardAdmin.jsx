@@ -343,6 +343,8 @@ const DashboardAdmin = () => {
     translations 
   } = usePage().props;
 
+  const { locale } = usePage().props;
+
   const statusData = [
     { name: /*'Pending'*/ translations.pending, value: tasksByStatus.pending, color: '#f59e0b' },
     { name: /*'In Progress'*/ translations.in_progress, value: tasksByStatus.in_progress, color: '#3b82f6' },
@@ -361,7 +363,7 @@ const DashboardAdmin = () => {
 
     };
   });
-  console.log(translations);
+  // console.log(translations);
 
   return (
     <AuthenticatedLayout
@@ -402,7 +404,7 @@ const DashboardAdmin = () => {
             <p className="text-3xl font-bold text-gray-900 dark:text-white">{totalUsers}</p>
           </div>
         </div>
-
+        
         {/* Charts */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Pie chart for task status */}

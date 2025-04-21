@@ -128,7 +128,7 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+export default function Register({trans_reg}) {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
@@ -192,22 +192,23 @@ export default function Register() {
 
     // Generate text for password strength
     const getPasswordStrengthText = () => {
-        if (passwordStrength <= 1) return 'Weak';
-        if (passwordStrength <= 3) return 'Medium';
-        return 'Strong';
+        if (passwordStrength <= 1) return trans_reg.strength_weak //'Weak';
+        if (passwordStrength <= 3) return trans_reg.strength_medium //'Medium';
+        return trans_reg.strength_strong //'Strong';
     };
 
     return (
         <GuestLayout>
-            <Head title="Create Account" />
+            {/* <Head title="Create Account" /> */}
+            <Head title={trans_reg.title} />
 
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="text-center">
                     <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">
-                        Create an Account
+                        {/* Create an Account */} {trans_reg.title}
                     </h2>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        Join us in just a few clicks
+                        {/* Join us in just a few clicks */} {trans_reg.subtitle}
                     </p>
                 </div>
             </div>
@@ -217,7 +218,7 @@ export default function Register() {
                     <form onSubmit={submit} className="space-y-5">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Full Name
+                                {/* Full Name */} {trans_reg.name}
                             </label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -232,7 +233,8 @@ export default function Register() {
                                     className="pl-10 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                     autoComplete="name"
                                     isFocused={true}
-                                    placeholder="John Doe"
+                                    // placeholder="John Doe"
+                                    placeholder={trans_reg.placeholder_name}
                                     onChange={(e) => setData('name', e.target.value)}
                                     required
                                 />
@@ -242,7 +244,7 @@ export default function Register() {
 
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Email Address
+                                {/* Email Address */} {trans_reg.email}
                             </label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -258,7 +260,8 @@ export default function Register() {
                                     value={data.email}
                                     className="pl-10 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                     autoComplete="username"
-                                    placeholder="your@email.com"
+                                    // placeholder="your@email.com"
+                                    placeholder={trans_reg.placeholder_email}
                                     onChange={(e) => setData('email', e.target.value)}
                                     required
                                 />
@@ -268,7 +271,8 @@ export default function Register() {
 
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Password
+                                {/* Password */}
+                                {trans_reg.password}
                             </label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -283,7 +287,8 @@ export default function Register() {
                                     value={data.password}
                                     className="pl-10 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                     autoComplete="new-password"
-                                    placeholder="••••••••"
+                                    // placeholder="••••••••"
+                                    placeholder={trans_reg.placeholder_password}
                                     onChange={(e) => setData('password', e.target.value)}
                                     required
                                 />
@@ -323,13 +328,13 @@ export default function Register() {
                             
                                     <ul className="text-xs text-gray-500 dark:text-gray-400 mt-1 list-disc list-inside">
                                         <li className={data.password.length >= 8 ? "text-green-500 dark:text-green-400" : ""}>
-                                                At least 8 characters
+                                                {/* At least 8 characters */} {trans_reg.at_least_8_characters}
                                         </li>
                                         <li className={/[0-9]/.test(data.password) ? "text-green-500 dark:text-green-400" : ""}>
-                                                At least one number
+                                                {/* At least one number */} {trans_reg.at_least_one_number}
                                         </li>
                                         <li className={/[^a-zA-Z0-9]/.test(data.password) ? "text-green-500 dark:text-green-400" : ""}>
-                                                At least one symbol
+                                                {/* At least one symbol */} {trans_reg.at_least_one_symbol}
                                         </li>
                                     </ul>
 
@@ -341,7 +346,7 @@ export default function Register() {
 
                         <div>
                             <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Confirm Password
+                                {/* Confirm Password */} {trans_reg.confirm_password}
                             </label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -356,7 +361,8 @@ export default function Register() {
                                     value={data.password_confirmation}
                                     className="pl-10 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                     autoComplete="new-password"
-                                    placeholder="••••••••"
+                                    // placeholder="••••••••"
+                                    placeholder={trans_reg.placeholder_password}
                                     onChange={(e) => setData('password_confirmation', e.target.value)}
                                     required
                                 />
@@ -380,7 +386,7 @@ export default function Register() {
                             </div>
                             {data.password && data.password_confirmation && data.password !== data.password_confirmation && (
                                 <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-                                    Passwords do not match
+                                    {/* Passwords do not match */} {trans_reg.passwords_do_not_match}
                                 </p>
                             )}
                             <InputError message={errors.password_confirmation} className="mt-2" />
@@ -397,10 +403,11 @@ export default function Register() {
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                         </svg>
-                                        Creating account...
+                                        {/* Creating account... */} {trans_reg.creating_account}
                                     </div>
                                 ) : (
-                                    'Create my account'
+                                    // 'Create my account'
+                                    trans_reg.create_my_account
                                 )}
                             </PrimaryButton>
                         </div>
@@ -412,7 +419,7 @@ export default function Register() {
                                 </div>
                                 <div className="relative flex justify-center text-sm">
                                     <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-                                        Already have an account?
+                                        {/* Already have an account? */} {trans_reg.already_have_account}
                                     </span>
                                 </div>
                             </div>
@@ -425,7 +432,7 @@ export default function Register() {
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                         <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
                                     </svg>
-                                    Log in
+                                    {/* Log in */} {trans_reg.log_in}
                                 </Link>
                             </div>
                         </div>

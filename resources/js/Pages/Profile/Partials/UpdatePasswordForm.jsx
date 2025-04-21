@@ -6,7 +6,7 @@ import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import { useRef } from 'react';
 
-export default function UpdatePasswordForm({ className = '' }) {
+export default function UpdatePasswordForm({ className = '', trans_profilePass }) {
     const passwordInput = useRef();
     const currentPasswordInput = useRef();
 
@@ -48,12 +48,13 @@ export default function UpdatePasswordForm({ className = '' }) {
         <section className={className}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Update Password
+                    {/* Update Password */} {trans_profilePass.title}
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Ensure your account is using a long, random password to stay
-                    secure.
+                    {/* Ensure your account is using a long, random password to stay
+                    secure. */}
+                    {trans_profilePass.description}
                 </p>
             </header>
 
@@ -61,8 +62,10 @@ export default function UpdatePasswordForm({ className = '' }) {
                 <div>
                     <InputLabel
                         htmlFor="current_password"
-                        value="Current Password"
+                        value={trans_profilePass.current_password}
+                        
                     />
+                    {/*value="Current Password"*/}
 
                     <TextInput
                         id="current_password"
@@ -83,7 +86,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="password" value="New Password" />
+                    <InputLabel htmlFor="password" value={trans_profilePass.new_password} /> {/*value="New Password"*/}
 
                     <TextInput
                         id="password"
@@ -101,8 +104,9 @@ export default function UpdatePasswordForm({ className = '' }) {
                 <div>
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value={trans_profilePass.confirm_password}
                     />
+                    {/*value="Confirm Password"*/}
 
                     <TextInput
                         id="password_confirmation"
@@ -122,7 +126,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
+                    <PrimaryButton disabled={processing}>{/*Save*/} {trans_profilePass.save}</PrimaryButton>
 
                     <Transition
                         show={recentlySuccessful}
@@ -132,7 +136,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                         leaveTo="opacity-0"
                     >
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Saved.
+                            {/* Saved. */} {trans_profilePass.saved}
                         </p>
                     </Transition>
                 </div>

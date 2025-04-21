@@ -41,7 +41,10 @@ class HandleInertiaRequests extends Middleware
             ],
 
             'locale' => fn () => app()->getLocale(),
-            'trans_layout' =>  __('navigation'),
+            'trans_layout' =>  __('navigation'), //pour AuthenticatedLayout.jsx
+            'trans_login' => __('login'), //pour Login.jsx
+            'trans_forgot' => __('forgotPass'), //pour ForgotPassword.jsx
+            'trans_reg' => __('registerAcc'), //pour Register.jsx
         ];
     }
 }

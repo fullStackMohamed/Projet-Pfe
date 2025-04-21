@@ -110,7 +110,9 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ status, canResetPassword, trans_login }) {
+    // const { trans_login } = usePage().props;
+
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -138,15 +140,16 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
-            <Head title="Login" />
+            {/* <Head title="Login" /> */}
+            <Head title={trans_login.title} />
 
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="text-center">
                     <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">
-                        Log in
+                        {/* Log in */} {trans_login.title}
                     </h2>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        Access your account
+                        {/* Access your account */} {trans_login.subtitle}
                     </p>
                 </div>
             </div>
@@ -171,7 +174,7 @@ export default function Login({ status, canResetPassword }) {
                     <form onSubmit={submit} className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Email address
+                                {/* Email address */} {trans_login.email}
                             </label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -188,7 +191,8 @@ export default function Login({ status, canResetPassword }) {
                                     className="pl-10 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                     autoComplete="username"
                                     isFocused={true}
-                                    placeholder="your@email.com"
+                                    // placeholder="your@email.com"
+                                    placeholder={trans_login.placeholder_email}
                                     onChange={(e) => setData('email', e.target.value)}
                                     required
                                 />
@@ -199,7 +203,7 @@ export default function Login({ status, canResetPassword }) {
                         <div>
                             <div className="flex items-center justify-between">
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Password
+                                    {/* Password */} {trans_login.password}
                                 </label>
                                 {canResetPassword && (
                                     <div className="text-sm">
@@ -207,7 +211,7 @@ export default function Login({ status, canResetPassword }) {
                                             href={route('password.request')}
                                             className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
                                         >
-                                            Forgot your password?
+                                            {/* Forgot your password? */} {trans_login.forgotPassword}
                                         </Link>
                                     </div>
                                 )}
@@ -263,9 +267,9 @@ export default function Login({ status, canResetPassword }) {
                                 </div>
                                 <div className="ml-2 text-sm">
                                     <label htmlFor="remember-me" className="font-medium text-gray-700 dark:text-gray-300">
-                                        Remember me
+                                        {/* Remember me */} {trans_login.remember}
                                     </label>
-                                    <p className="text-gray-500 dark:text-gray-400">Stay logged in for 30 days</p>
+                                    <p className="text-gray-500 dark:text-gray-400">{/*Stay logged in for 30 days*/} {trans_login.stayLoggedIn} </p>
                                 </div>
                             </div>
                         </div>
@@ -281,10 +285,12 @@ export default function Login({ status, canResetPassword }) {
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                         </svg>
-                                        Logging in...
+                                        {/* Logging in... */}
+                                        {trans_login.loggingIn}
                                     </div>
                                 ) : (
-                                    'Log in'
+                                    // 'Log in' 
+                                    trans_login.loginButton
                                 )}
                             </PrimaryButton>
                         </div>
@@ -296,7 +302,7 @@ export default function Login({ status, canResetPassword }) {
                                 </div>
                                 <div className="relative flex justify-center text-sm">
                                     <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-                                        Don't have an account?
+                                        {/* Don't have an account? */} {trans_login.noAccount}
                                     </span>
                                 </div>
                             </div>
@@ -306,7 +312,7 @@ export default function Login({ status, canResetPassword }) {
                                     href={route('register')}
                                     className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 inline-flex items-center"
                                 >
-                                    Create an account
+                                    {/* Create an account */} {trans_login.createAccount}
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                                     </svg>
@@ -320,7 +326,7 @@ export default function Login({ status, canResetPassword }) {
                     <div className="relative">
                         <div className="relative flex justify-center text-sm">
                             <span className="px-2 text-gray-500 dark:text-gray-400">
-                                Or continue with
+                                {/* Or continue with */} {trans_login.orContinueWith}
                             </span>
                         </div>
                     </div>
@@ -328,7 +334,7 @@ export default function Login({ status, canResetPassword }) {
                     <div className="mt-6 grid grid-cols-2 gap-3">
                         <div>
                             <a href="#" className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                                <span className="sr-only">Sign in with Google</span>
+                                <span className="sr-only">{/*Sign in with Google*/} {trans_login.sign_in_google}</span>
                                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
                                 </svg>
@@ -337,7 +343,7 @@ export default function Login({ status, canResetPassword }) {
 
                         <div>
                             <a href="#" className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                                <span className="sr-only">Sign in with GitHub</span>
+                                <span className="sr-only">{/*Sign in with GitHub*/} {trans_login.sign_in_github} </span>
                                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                     <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
                                 </svg>
