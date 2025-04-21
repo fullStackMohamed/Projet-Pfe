@@ -83,6 +83,7 @@ class MyTasksController extends Controller
     {
         return inertia('Task/Show', [
             'task' => new TaskResource($task),
+            // 'translations' => __('showTask'),
         ]);
     }
 

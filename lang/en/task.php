@@ -3,9 +3,9 @@
 return [
        'tasks' => 'Tasks',
        'add_new' => 'Add new', 
-       'project_name' => 'Project Name',
        'id' => 'Id',
-       'image' => 'Image',              
+       'image' => 'Image',
+       'project_name' => 'Project Name',   
        "name" => "Name",
        "task_name" => "Task Name",
        'status' => 'Status',

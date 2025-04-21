@@ -367,25 +367,26 @@ const DashboardAdmin = () => {
     <AuthenticatedLayout
       user={auth.user}
       header={
+        <div className="flex justify-between">
         <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
           {/* Dashboard */} 
           {translations.dashboard}
         </h2>
+
+         {/* Download button */}
+         <form action={route('reports.all.download')}>
+         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
+           {/* Download Report */}
+           {translations.download_report}
+         </button>
+       </form>
+       </div>
       }
     >
       {/* <Head title="Dashboard" /> */}
       <Head title={translations.dashboard} />
 
-    
       <div className="p-6">
-        {/* Download button */}
-        <form className="flex justify-end mb-4" action={route('reports.all.download')}>
-          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
-            {/* Download Report */}
-            {translations.download_report}
-          </button>
-        </form>
-
         {/* General stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">

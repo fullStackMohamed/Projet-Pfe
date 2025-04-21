@@ -271,7 +271,6 @@ export default function Index({auth, projects, queryParams = null,
 
     return (
             <AuthenticatedLayout
-
                 user= {auth.user}
                 header={
                 <div className="flex justify-between items-center"> 

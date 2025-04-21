@@ -110,6 +110,9 @@ class ProjectController extends Controller
             "tasks" => TaskResource::collection($tasks),
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
+            // 'translations' => array_merge(__('task'), __('showProject')),
+            'translations' => __('task'), //pour tasks qui affiche sous show project
+            'trans' => __('showProject')
         ]);
     }
 

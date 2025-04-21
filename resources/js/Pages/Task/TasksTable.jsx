@@ -307,6 +307,7 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
                                 sortChanged={sortChanged}
                             >
                                 {/* ID */} {translations.id}
+                                {console.log(translations)}
                             </TableHeading>
                             
                             <th className="px-4 py-3">{/*Image*/} {translations.image}</th>

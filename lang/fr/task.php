@@ -3,6 +3,8 @@
 return [
     "tasks" => 'Tâches',
     "add_new" => "Ajouter  un nouveau",
+    'id' => 'Id',
+    'image' => 'Image',
     "project_name" => "Nom du projet",
     "name" => "Nom",
     "task_name" => "Nom de la tâche",

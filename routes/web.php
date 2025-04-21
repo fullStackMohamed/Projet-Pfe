@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+// Route::get('/project/34', [ProjectController::class, 'show'])->name('project.show'); //juste pour tester
 
 // Routes pour utilisateurs authentifiés et vérifiés
 Route::middleware(['auth', 'user'])->group(function() {
@@ -77,6 +77,7 @@ Route::get('/lang/{locale}', function ($locale) {
     App::setLocale($locale);
     return Redirect::back();
 })->name('lang.switch');
+
 
 // Inclusion des routes d'authentification
 require __DIR__.'/auth.php';
