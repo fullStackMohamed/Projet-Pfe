@@ -4,7 +4,7 @@ import { Head, Link } from "@inertiajs/react";
 import TasksTable from "../Task/TasksTable";
 
 
-export default function Show({auth, success, project, tasks, queryParams, translations, trans}) {
+export default function Show2({auth, success, project, tasks, queryParams, translations, trans}) {
 
        return (
            <AuthenticatedLayout
@@ -16,13 +16,6 @@ export default function Show({auth, success, project, tasks, queryParams, transl
                     {` ${trans.project} "${project.name}" `}
                 </h2>
                 
-                {
-                auth.user.role === 'admin' &&
-                <Link href={route("project.edit", project.id)} className="bg-emerald-500 py-1 px-3 text-white rounded
-                shadow transition-all hover:bg-emerald-600">
-                    {/* Edit */} {trans.edit}
-                </Link>
-                }
                 </div>
               } 
               >

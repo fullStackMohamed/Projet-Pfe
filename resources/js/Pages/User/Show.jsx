@@ -16,10 +16,7 @@ export default function Show({auth, user, tasks, queryParams}) {
               >
                   <Head title={`User "${user.name}"`} />   
                   <pre> {JSON.stringify(user)}</pre>
-
-                  
-
-              
+            
    
               <div className="pb-12">
                   <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

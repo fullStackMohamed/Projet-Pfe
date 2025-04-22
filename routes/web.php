@@ -57,7 +57,9 @@ Route::middleware(['auth', 'user'])->group(function() {
 
     //Mes projets
     Route::get('myProjects', [MyProjectsController::class, 'myProjects'])->name('myProjects');
-
+    Route::resource('my-Project', MyProjectsController::class);
+    // Route::get('my-Project/{id}/show', [MyProjectsController::class, 'show'])->name('my-Project.show');
+    // Route::get('my-Project/{id}/edit', [MyProjectsController::class, 'edit'])->name('my-Project.edit');
 
 });
 

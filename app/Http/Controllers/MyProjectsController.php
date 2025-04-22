@@ -75,8 +75,40 @@ class MyProjectsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    // public function show(Project $project)
+    // {
+    //     $query = $project->tasks();
+    //     $sortField =request("sort_field", 'created_at');
+    //     $sortDirection =request("sort_direction", "desc");
+
+    //     if (request("name")) {
+    //         $query->where("name","like","%". request("name") ."%");
+    //     }
+    //     if (request("status")) {
+    //         $query->where("status", request("status"));
+    //     }
+
+    //     $tasks = $query->orderBy($sortField, $sortDirection)->paginate(10)->onEachSide(1);
+
+    //     // dd($project);
+    //     return inertia('Project/Show', [
+    //         'project' => new ProjectResource($project),
+    //         "tasks" => TaskResource::collection($tasks),
+    //         'queryParams' => request()->query() ?: null,
+    //         'success' => session('success'),
+    //         'trans' => __('showProject'),
+    //         'translations' => __('task'), //pour tasks qui affiche sous show project
+
+    //     ]);
+    // }
+
+
+     public function show($id)
     {
+        
+        // Récupération du projet
+         $project = Project::find($id);
+
         $query = $project->tasks();
         $sortField =request("sort_field", 'created_at');
         $sortDirection =request("sort_direction", "desc");
@@ -89,11 +121,16 @@ class MyProjectsController extends Controller
         }
 
         $tasks = $query->orderBy($sortField, $sortDirection)->paginate(10)->onEachSide(1);
+
+        // dd($project);
         return inertia('Project/Show', [
             'project' => new ProjectResource($project),
             "tasks" => TaskResource::collection($tasks),
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
+            'trans' => __('showProject'),
+            'translations' => __('task'), //pour tasks qui affiche sous show project
+
         ]);
     }
 
@@ -104,6 +141,7 @@ class MyProjectsController extends Controller
     {
         return inertia('Project/Edit', [
             'project' => new ProjectResource($project),
+            'translations' => __('editProject'),
         ]);
     }
 

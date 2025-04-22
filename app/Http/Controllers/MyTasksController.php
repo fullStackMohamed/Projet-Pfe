@@ -79,11 +79,13 @@ class MyTasksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show($id)
     {
+        $task = Task::find($id);
+
         return inertia('Task/Show', [
             'task' => new TaskResource($task),
-            // 'translations' => __('showTask'),
+            'translations' => __('showTask'),
         ]);
     }
 

@@ -14,10 +14,21 @@ export default function Show({auth, task, translations}) {
                     {` ${translations.task} "${task.name}" `}
                     </h2>
 
+                    {
+                    auth.user.role === 'admin' &&
                     <Link href={route("task.edit", task.id)} className="bg-emerald-500 py-1 px-3 text-white rounded
                     shadow transition-all hover:bg-emerald-600">
                         {/* Edit */} {translations.edit}
                     </Link>
+                    }
+
+                    {
+                    auth.user.role === 'user' &&
+                    <Link href={route("myTasks.edit", task.id)} className="bg-emerald-500 py-1 px-3 text-white rounded
+                    shadow transition-all hover:bg-emerald-600">
+                        {/* Edit */} {translations.edit}
+                    </Link>
+                    }
                 </div>
               } 
               >

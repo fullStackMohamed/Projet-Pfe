@@ -380,11 +380,18 @@ export default function Index({auth, projects, queryParams = null,
                                             <td className="px-4 py-3"> 
                                                 <img src={project.image_path} className="w-16 h-16 object-cover rounded-md" />
                                             </td>
-
+                                            {
+                                            auth.user.role === 'admin' &&
                                             <th className="px-4 py-3 text-slate-800 dark:text-slate-200 text-nowrap hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                                <Link href={route('project.show', project.id)}>{project.name}</Link>
-                                                
+                                                <Link href={route('project.show', project.id)}>{project.name}</Link>            
                                             </th>
+                                            }
+
+                                            {auth.user.role === 'user' &&
+                                            <th className="px-4 py-3 text-slate-800 dark:text-slate-200 text-nowrap hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                                <Link href={route('my-Project.show', project.id)}>{project.name}</Link>            
+                                            </th>
+                                            }
                                             <td className="px-4 py-3">
                                                 {/* {project.status} */}
                                                 <span className={
