@@ -458,22 +458,22 @@ const DashboardAdmin = () => {
             <table className="min-w-full">
               <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="py-2 px-4 text-left border-b dark:border-gray-600">{/*Name*/} {translations.name}</th>
-                  <th className="py-2 px-4 text-left border-b dark:border-gray-600">{/*Due Date*/} {translations.due_date}</th>
-                  <th className="py-2 px-4 text-left border-b dark:border-gray-600">{/*Project*/} {translations.project}</th>
-                  <th className="py-2 px-4 text-left border-b dark:border-gray-600">{/*Assigned To*/} {translations.assigned_to}</th>
+                  <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{/*Name*/} {translations.name}</th>
+                  <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{/*Due Date*/} {translations.due_date}</th>
+                  <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{/*Project*/} {translations.project}</th>
+                  <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{/*Assigned To*/} {translations.assigned_to}</th>
                 </tr>
               </thead>
               <tbody>
                 {overdueTasks.length > 0 ? (
                   overdueTasks.map(task => (   
                     <tr key={task.id}>
-                      <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200">{task.name}</td>
+                      <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300">{task.name}</td>
                       <td className="py-2 px-4 border-b dark:border-gray-600 text-red-500 dark:text-red-400">
                         {new Date(task.due_date).toLocaleDateString()}
                       </td>
-                      <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200">{task.project?.name || 'N/A'}</td>
-                      <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200">{task.assigned_user?.name || 'Unassigned'}</td>
+                      <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300">{task.project?.name || 'N/A'}</td>
+                      <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300">{task.assigned_user?.name || 'Unassigned'}</td>
                     </tr>
                   ))
                 ) : (

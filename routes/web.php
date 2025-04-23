@@ -20,7 +20,7 @@ use App\Http\Controllers\ReportController;
 
 // Redirection de la racine vers le tableau de bord
 Route::get('/', function(){
-    return Inertia::render('Auth/Login');
+    return Inertia::render('Welcome');
 });
 
 // Routes pour utilisateurs authentifiés et vérifiés
