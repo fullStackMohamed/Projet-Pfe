@@ -2,7 +2,7 @@
 
 return [
     "tasks" => 'المهام',
-    "add_new" => "إضافة جديدة",
+    "add_new" => "إضافة مهمة",
     'id' => 'المعرف',
     'image' => 'الصورة',
     "project_name" => "اسم المشروع",
@@ -12,9 +12,9 @@ return [
     "select_status" => "اختر الحالة",
     'create_date' => 'تاريخ الإنشاء',
     'due_date' => "تاريخ الاستحقاق",
-    "pending" => "معلق",
+    'pending' => 'قيد الانتظار',     
     "in_progress" => "قيد التنفيذ",
-    "completed" => "تم",
+    'completed'  => 'مكتملة', 
     "created_by" => "تم الإنشاء بواسطة",
     "actions" => "الإجراءات",
     "edit" => "تعديل",

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'project_name' =>  'مدير المهام',
+    'language'=> 'اللغة',
     'welcome' => 'مرحبًا بك في موقعنا',
     'dashboard' => 'لوحة التحكم',
     'profile' => 'الملف الشخصي',

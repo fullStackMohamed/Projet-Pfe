@@ -219,11 +219,14 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, router } from "@inertiajs/react";
 import Pagination from "@/Components/Pagination";
-import {PROJECT_STATUS_TEXT_MAP, PROJECT_STATUS_CLASS_MAP} from "@/constants.jsx";
+// import {PROJECT_STATUS_TEXT_MAP, PROJECT_STATUS_CLASS_MAP} from "@/constants.jsx";
+import { PROJECT_STATUS_CLASS_MAP} from "@/constants.jsx";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 //import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/16/solid';
 import TableHeading from "@/Components/TableHeading";
+
+import { useTranslations } from "@/useTranslations";
 
 export default function Index({auth, projects, queryParams = null,
     success, translations
@@ -267,6 +270,8 @@ export default function Index({auth, projects, queryParams = null,
         }   
             router.delete(route('project.destroy', project.id)) 
     }
+
+    const { PROJECT_STATUS_TEXT_MAP } = useTranslations();
   
 
     return (

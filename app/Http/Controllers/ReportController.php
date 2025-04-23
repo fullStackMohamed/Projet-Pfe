@@ -32,6 +32,9 @@ public function generateAllProjectsReport()
         'date' => date('d/m/Y H:i'),
     ];
     
+    $data['trans_rep'] = __('reportPdf'); //ajout variable de translation
+    //dd($data);
+    
     // Générer le PDF
     $pdf = PDF::loadView('pdf.all_projects_report', $data);
     

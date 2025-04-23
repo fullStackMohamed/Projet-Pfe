@@ -1,10 +1,16 @@
-import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants";
+// import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants";
+import { TASK_STATUS_CLASS_MAP } from "@/constants";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { TASK_PRIORITY_CLASS_MAP, TASK_PRIORITY_TEXT_MAP } from "@/constants";
+// import { TASK_PRIORITY_CLASS_MAP, TASK_PRIORITY_TEXT_MAP } from "@/constants";
+import { TASK_PRIORITY_CLASS_MAP } from "@/constants";
+
+import { useTranslations } from "@/useTranslations";
 
 export default function Show({auth, task, translations}) {
-       return (
+    const { TASK_STATUS_TEXT_MAP, TASK_PRIORITY_TEXT_MAP } = useTranslations();
+
+        return (
            <AuthenticatedLayout
               user= {auth.user}
               header={

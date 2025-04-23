@@ -19,7 +19,7 @@ return [
     'select_priority' => 'Sélectionnez une priorité',
     'low' => 'Faible',
     'medium' => 'Moyenne',
-    'high' => 'Élevée',
+    'high' => 'Haute',
     'select_user' => 'Sélectionnez un utilisateur',
     'cancel' => 'Annuler',
     'submit' => 'Valider',

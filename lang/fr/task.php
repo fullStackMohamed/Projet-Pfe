@@ -2,7 +2,7 @@
 
 return [
     "tasks" => 'Tâches',
-    "add_new" => "Ajouter  un nouveau",
+    "add_new" => "Ajouter une tâche",
     'id' => 'Id',
     'image' => 'Image',
     "project_name" => "Nom du projet",
@@ -14,7 +14,7 @@ return [
     'due_date' => "Date d'échéance",
     "pending" => "En attente",
     "in_progress" => "En cours",
-    "completed" => "Terminé",
+    "completed" => "Terminée",
     "created_by" => "Créé par",
     "actions" => "Actions",
     "edit" => "modifier",

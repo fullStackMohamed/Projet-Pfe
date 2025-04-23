@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'project_name' => 'TaskManager',
+    'language'=> 'Language',
     'welcome' => 'Welcome to our site',
     'dashboard' => 'Dashboard',
     'profile' => 'Profile',

@@ -36,7 +36,7 @@ const LanguageSwitcher = () => {
       {/* Bouton principal */}
       <button 
         type="button" 
-        className="flex items-center space-x-2 bg-white border rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors"
+        className="flex items-center space-x-2 bg-white/85 border rounded-lg px-1 py-1 text-gray-700 hover:bg-gray-50 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
         <GlobeAltIcon className="h-5 w-5 text-blue-500" />

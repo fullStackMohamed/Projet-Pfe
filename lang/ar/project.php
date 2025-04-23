@@ -2,7 +2,7 @@
 
 return [
     'projects' => 'المشاريع',
-    'add_new' => 'إضافة',
+    'add_new' => 'إضافة مشروع',
     'id' => 'المعرف',
     'image' => 'الصورة',
     'name' => 'الاسم',
@@ -13,9 +13,9 @@ return [
     'actions' => 'الإجراءات',
     'project_name' => 'اسم المشروع',
     'select_status' => 'اختر الحالة',
-    'pending' => 'معلق',
+    'pending' => 'قيد الانتظار',     
     'in_progress' => 'قيد التنفيذ',
-    'completed' => 'تم',
+    'completed'  => 'مكتمل', 
     'delete_confirmation' => 'هل أنت متأكد أنك تريد حذف هذا المشروع؟',
     'edit' => 'تعديل',
     'delete' => 'حذف',

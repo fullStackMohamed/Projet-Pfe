@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'project_name' => 'Gestionnaire de tâches',
+    'language'=> 'Langue',
     'welcome' => 'Bienvenue sur notre site',
     'dashboard' => 'Tableau de bord',
     'profile' => 'Profil',

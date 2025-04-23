@@ -2,7 +2,7 @@
 
 return [
        "users" => "Utilisateurs",
-       "add_new" => "Ajouter un nouveau",
+       "add_new" => "Ajouter un utilisateur",
        "id" => "ID",
        "name" => "Nom",
        "email" => "Email",

@@ -2,7 +2,7 @@
 
 return [
        'tasks' => 'Tasks',
-       'add_new' => 'Add new', 
+       'add_new' => 'Add Task', 
        'id' => 'Id',
        'image' => 'Image',
        'project_name' => 'Project Name',   

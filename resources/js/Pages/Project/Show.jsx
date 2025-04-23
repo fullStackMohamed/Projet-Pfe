@@ -1,12 +1,17 @@
-import { PROJECT_STATUS_TEXT_MAP, PROJECT_STATUS_CLASS_MAP } from "@/constants";
+// import { PROJECT_STATUS_TEXT_MAP, PROJECT_STATUS_CLASS_MAP } from "@/constants";
+import { PROJECT_STATUS_CLASS_MAP } from "@/constants";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import TasksTable from "../Task/TasksTable";
 
+import { useTranslations } from "@/useTranslations";
 
 export default function Show({auth, success, project, tasks, queryParams, translations, trans}) {
 
-       return (
+        const { PROJECT_STATUS_TEXT_MAP, } = useTranslations();
+
+
+        return (
            <AuthenticatedLayout
                user= {auth.user}
                 header={

@@ -45,6 +45,7 @@ class HandleInertiaRequests extends Middleware
             'trans_login' => __('login'), //pour Login.jsx
             'trans_forgot' => __('forgotPass'), //pour ForgotPassword.jsx
             'trans_reg' => __('registerAcc'), //pour Register.jsx
+            'trans_const' => __('constant'),
         ];
     }
 }

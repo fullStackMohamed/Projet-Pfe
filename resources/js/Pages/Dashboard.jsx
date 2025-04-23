@@ -1,6 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
-import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants.jsx";
+// import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants.jsx";
+import { TASK_STATUS_CLASS_MAP } from "@/constants.jsx";
+
+import { useTranslations } from '@/useTranslations';
 
 export default function Dashboard({
   auth,
@@ -13,6 +16,10 @@ export default function Dashboard({
   activeTasks,
   translations
 }) {
+
+
+  const { TASK_STATUS_TEXT_MAP, } = useTranslations();
+
   return (
     <AuthenticatedLayout
       user={auth.user}

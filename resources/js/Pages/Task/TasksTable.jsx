@@ -220,10 +220,13 @@
 
 import TableHeading from "@/Components/TableHeading";
 import Pagination from "@/Components/Pagination";
-import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants.jsx";
+// import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants.jsx";
+import { TASK_STATUS_CLASS_MAP } from "@/constants.jsx";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 import { Link, router, usePage } from "@inertiajs/react";
+
+import { useTranslations } from "@/useTranslations";
 
 export default function TasksTable({ tasks, success, queryParams = null, hideProjectColumn = false, translations }) {
     const { auth } = usePage().props;
@@ -287,6 +290,9 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
             router.delete(route('myTasks.destroy', task.id));
         }
     };
+
+    const { TASK_STATUS_TEXT_MAP } = useTranslations();
+
     
     return (
         <>
@@ -396,14 +402,14 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
                             <tr className="bg-white border-b dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 dark:border-slate-700" key={task.id}>
                                 <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{task.id}</td>
                                 <td className="px-4 py-3">
-                                    <img src={task.image_path} alt={task.name} className="w-16 h-auto" />
+                                    <img src={task.image_path} alt={task.name} className="w-23 h-16 object-cover rounded-md" />
                                 </td>
                                 
                                 {!hideProjectColumn && (
                                     <td className="px-4 py-3">{task.project.name}</td>
                                 )}
                                 
-                                <th className="px-4 py-3 text-slate-800 dark:text-slate-200 text-nowrap font-medium">
+                                <th className="px-4 py-3 text-slate-800 dark:text-slate-200 text-nowrap hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                     {auth.user.role === "admin" && (
                                         <Link href={route('task.show', task.id)}>
                                             {task.name}

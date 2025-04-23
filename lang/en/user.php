@@ -2,7 +2,7 @@
 
 return [
        "users" => "Users",
-       "add_new" => "Add new",
+       "add_new" => "Add User",
        "id" => "ID",
        "name" => "Name",
        "email" => "Email",
