@@ -30,7 +30,8 @@ class UpdateTaskRequest extends FormRequest
             'project_id' => ['required', 'exists:projects,id'],
             'assigned_user_id' => ['required', 'exists:users,id'],
             'status' => ['required', Rule::in(['pending', 'in_progress', 'completed'])],
-            'priority' => ['required', Rule::in(['low', 'medium', 'high'])]
+            'priority' => ['required', Rule::in(['low', 'medium', 'high'])],
+            'assigned_user_id' => 'required|exists:users,id',
             ];
     }
 }

@@ -68,24 +68,24 @@ export default function Dashboard({
     <table className="min-w-full">
       <thead className="bg-gray-50 dark:bg-gray-700">
         <tr>
-          <th className="py-2 px-4 text-left border-b dark:border-gray-600">{translations.id}</th>
-          <th className="py-2 px-4 text-left border-b dark:border-gray-600">{translations.project_name}</th>
-          <th className="py-2 px-4 text-left border-b dark:border-gray-600">{translations.task_name}</th>
-          <th className="py-2 px-4 text-left border-b dark:border-gray-600">{translations.status}</th>
-          <th className="py-2 px-4 text-left border-b dark:border-gray-600">{translations.due_date}</th>
+          <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{translations.id}</th>
+          <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{translations.project_name}</th>
+          <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{translations.task_name}</th>
+          <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{translations.status}</th>
+          <th className="py-2 px-4 text-start dark:text-white border-b dark:border-gray-600">{translations.due_date}</th>
         </tr>
       </thead>
       <tbody>
         {activeTasks.data.length > 0 ? (
           activeTasks.data.map((task) => (
             <tr key={task.id}>
-              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200">{task.id}</td>
-              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:underline">
-                <Link href={route('project.show', task.project.id)}>
+              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300">{task.id}</td>
+              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300 hover:underline">
+                <Link href={route('my-Project.show', task.project.id)}>
                   {task.project.name}
                 </Link>
               </td>
-              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:underline">
+              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300 hover:underline">
                 <Link href={route('myTasks.show', task.id)}>
                   {task.name}
                 </Link>
@@ -95,7 +95,7 @@ export default function Dashboard({
                   {TASK_STATUS_TEXT_MAP[task.status]}
                 </span>
               </td>
-              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-200">
+              <td className="py-2 px-4 border-b dark:border-gray-600 text-gray-800 dark:text-gray-300">
                 {task.due_date}
               </td>
             </tr>

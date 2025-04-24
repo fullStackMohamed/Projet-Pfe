@@ -54,7 +54,8 @@ public function index()
 public function index2()
 {
     // Récupération des statistiques de base
-    $totalUsers = User::count();
+    // $totalUsers = User::count(); //Inclut l'admin
+    $totalUsers = User::where('role', '!=', 'admin')->count();  // Exclut les admins
     $totalTasks = Task::count();
     
     // Appel de la procédure stockée pour le nombre de projets

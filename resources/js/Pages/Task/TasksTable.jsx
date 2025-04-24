@@ -446,7 +446,7 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
                                         </Link>
                                     )}
                                     
-                                    {auth.user.role === 'user' && (
+                                    {auth.user.role === 'user' && task.assigned_user_id === auth.user.id && (
                                         <Link 
                                             href={route('myTasks.edit', task.id)}
                                             className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mx-2"
@@ -454,6 +454,8 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
                                             {/*Edit*/} {translations.edit} 
                                         </Link>
                                     )}
+                                       <span className="text-nowrap text-gray-400 italic">{auth.user.role === 'user' && task.assigned_user_id !== auth.user.id && 'Non autorisé'}</span> 
+
                                     
                                     {auth.user.role === 'admin' && (
                                         <button 
