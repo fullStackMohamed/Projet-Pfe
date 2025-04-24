@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'project_name' => 'Gestionnaire de tâches',
+    'project_name' => 'TaskManager',
     'language'=> 'Langue',
     'welcome' => 'Bienvenue sur notre site',
     'dashboard' => 'Tableau de bord',
@@ -12,4 +12,5 @@ return [
     'my_tasks' => 'Mes tâches',
     'my_projects' => 'Mes projets',
     'logout' => 'Déconnexion',
+    'theme' => 'Thème',
 ];

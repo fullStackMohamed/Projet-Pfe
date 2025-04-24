@@ -569,6 +569,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import LanguageSwitcher from '@/Pages/Langue/LanguageSwitcher';
+import DarkModeToggle from '@/DarkMode/DarkModeToggle';
 
 export default function AuthenticatedLayout({ header, children }) {
     const { auth } = usePage().props;
@@ -720,6 +721,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                         </svg>
                                         {trans_layout.logout}
                                     </Link>
+
+                                    <div className="border-t border-gray-200 dark:border-gray-600 px-4 py-2">
+  <div className="flex items-center justify-between">
+    <span className="text-sm text-gray-700 dark:text-gray-300">{trans_layout.theme || "Thème"}</span>
+    <DarkModeToggle />
+  </div>
+</div>
+
                                 </div>
                             </Transition>
                         </div>
@@ -832,6 +841,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                     </svg>
                                     {trans_layout.logout}
                                 </Link>
+
+                                <div className="flex items-center justify-between rounded-md px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300">
+                                    <span>{trans_layout.theme || "Thème"}</span>
+                                    <DarkModeToggle />
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

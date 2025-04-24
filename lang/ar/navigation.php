@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'project_name' =>  'مدير المهام',
+    'project_name' =>  'تاسك مناجر',
     'language'=> 'اللغة',
     'welcome' => 'مرحبًا بك في موقعنا',
     'dashboard' => 'لوحة التحكم',
@@ -12,4 +12,5 @@ return [
     'my_tasks' => 'مهامي',
     'my_projects' => 'مشاريعي',
     'logout' => 'تسجيل الخروج',
+    'theme' => 'السمة',
 ];

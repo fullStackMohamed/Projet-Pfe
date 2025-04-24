@@ -12,4 +12,5 @@ return [
     'my_tasks' => 'My Tasks',
     'my_projects' => 'My Projects',
     'logout' => 'Log Out',
+    'theme' => 'Theme',
 ];

@@ -366,14 +366,17 @@
 
 
 
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import LanguageSwitcher from './Langue/LanguageSwitcher';
 import DarkModeToggle from '@/DarkMode/DarkModeToggle';
 
 export default function Welcome({ auth }) {
+    const {trans_acc} = usePage().props;
+
     return (
         <>
-            <Head title="TaskManager - Gestion de tâches" />
+            <Head title={trans_acc.title} />
+
             <div className="bg-gray-50 min-h-screen text-gray-800 dark:bg-gray-900 dark:text-white">
                 {/* Navbar */}
                 <nav className="bg-white shadow-sm dark:bg-gray-800 dark:border-b dark:border-gray-700">
@@ -382,12 +385,13 @@ export default function Welcome({ auth }) {
                             <div className="flex items-center">
                                 <div className="flex-shrink-0 flex items-center">
                                     <img 
-                                        className="h-8 w-auto" 
+                                        className="h-14 w-auto" 
                                         src="/storage/logoApp/task-management-logo-v7.svg" 
                                         alt="TaskManager Logo" 
                                     />
                                     <span className="ml-2 text-lg font-semibold text-blue-600 dark:text-blue-400">
-                                        TaskManager
+                                        {/* TaskManager */}
+                                        {trans_acc.nav_title}
                                     </span>
                                 </div>
                             </div>
@@ -400,7 +404,7 @@ export default function Welcome({ auth }) {
                                         href={route('dashboard')}
                                         className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                                     >
-                                        Tableau de bord
+                                        {/* Tableau de bord */} {trans_acc.dashboard}
                                     </Link>
                                 ) : (
                                     <div className="flex space-x-4">
@@ -408,13 +412,13 @@ export default function Welcome({ auth }) {
                                             href={route('login')}
                                             className="px-4 py-2 rounded-md text-blue-600 font-medium hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                                         >
-                                            Connexion
+                                            {/* Connexion */} {trans_acc.login}
                                         </Link>
                                         <Link
                                             href={route('register')}
                                             className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                                         >
-                                            S'inscrire
+                                            {/* S'inscrire */} {trans_acc.register}
                                         </Link>
                                     </div>
                                 )}
@@ -429,31 +433,33 @@ export default function Welcome({ auth }) {
                         <div className="lg:flex lg:items-center lg:justify-between">
                             <div className="lg:w-1/2">
                                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-                                    Simplifiez la gestion de vos <span className="text-blue-600 dark:text-blue-400">tâches</span>
+                                    {/* Simplifiez la gestion de vos <span className="text-blue-600 dark:text-blue-400">tâches</span> */}
+                                    {trans_acc.hero_title}
                                 </h1>
                                 <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-                                    Une application simple et intuitive pour organiser votre travail
-                                    et suivre l'avancement de vos projets.
+                                    {/* Une application simple et intuitive pour organiser votre travail
+                                    et suivre l'avancement de vos projets. */}
+                                    {trans_acc.hero_description}
                                 </p>
                                 <div className="mt-8 flex gap-4">
                                     <Link
                                         href={route('register')}
                                         className="px-5 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                                     >
-                                        Commencer
+                                        {/* Commencer */} {trans_acc.get_started}
                                     </Link>
                                     <Link
                                         href="#features"
                                         className="px-5 py-2 rounded-md border border-gray-300 bg-white text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700"
                                     >
-                                        En savoir plus
+                                        {/* En savoir plus */} {trans_acc.learn_more}
                                     </Link>
                                 </div>
                             </div>
                             <div className="mt-10 lg:mt-0 lg:w-1/2">
                                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
                                     <img
-                                        src="https://fellow.app/wp-content/uploads/2021/10/task-management-software.jpg"
+                                        src="/storage/imageAcceuil/acceuil.webp"
                                         alt="TaskManager Interface"
                                         className="w-full h-auto rounded-md"
                                     />
@@ -468,10 +474,11 @@ export default function Welcome({ auth }) {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                                Fonctionnalités principales
+                                {/* Fonctionnalités principales */} {trans_acc.title_features}
                             </h2>
                             <p className="mt-3 text-gray-600 dark:text-gray-300">
-                                Les outils essentiels pour gérer vos tâches efficacement
+                                {/* Les outils essentiels pour gérer vos tâches efficacement */}
+                                {trans_acc.subtitle_features}
                             </p>
                         </div>
 
@@ -483,9 +490,10 @@ export default function Welcome({ auth }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                     </svg>
                                 </div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Suivi des tâches</h3>
+                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Suivi des tâches*/} {trans_acc.title_features} </h3>
                                 <p className="mt-2 text-gray-600 dark:text-gray-300">
-                                    Créez, organisez et suivez facilement vos tâches quotidiennes.
+                                    {/* Créez, organisez et suivez facilement vos tâches quotidiennes. */}
+                                    {trans_acc.description_task_tracking}
                                 </p>
                             </div>
 
@@ -496,9 +504,10 @@ export default function Welcome({ auth }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Planification</h3>
+                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Planification*/} {trans_acc.title_planning}</h3>
                                 <p className="mt-2 text-gray-600 dark:text-gray-300">
-                                    Planifiez vos tâches avec des dates d'échéance et des rappels.
+                                    {/* Planifiez vos tâches avec des dates d'échéance et des rappels. */}
+                                    {trans_acc.description_planning}
                                 </p>
                             </div>
 
@@ -509,9 +518,10 @@ export default function Welcome({ auth }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Progression</h3>
+                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Progression*/} {trans_acc.title_progress} </h3>
                                 <p className="mt-2 text-gray-600 dark:text-gray-300">
-                                    Visualisez votre progression et améliorez votre productivité.
+                                    {/* Visualisez votre progression et améliorez votre productivité. */}
+                                    {trans_acc.description_progress}
                                 </p>
                             </div>
                         </div>
@@ -524,45 +534,51 @@ export default function Welcome({ auth }) {
                         <div className="lg:flex lg:items-center lg:justify-between">
                             <div className="lg:w-1/2">
                                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                                    À propos du projet
+                                    {/* À propos du projet */} {trans_acc.title_about}
                                 </h2>
                                 <p className="mt-4 text-gray-600 dark:text-gray-300">
-                                    TaskManager est une application de gestion de tâches développée dans le cadre 
+                                    {/* TaskManager est une application de gestion de tâches développée dans le cadre 
                                     d'un projet de fin d'études. L'objectif est de créer une solution simple et 
-                                    efficace pour aider les utilisateurs à mieux organiser leur travail et leurs projets.
+                                    efficace pour aider les utilisateurs à mieux organiser leur travail et leurs projets. */}
+                                    {trans_acc.description1_about}
                                 </p>
                                 <p className="mt-4 text-gray-600 dark:text-gray-300">
-                                    Développée avec React, Laravel et Inertia, cette application combine une 
-                                    interface moderne avec une architecture robuste.
+                                    {/* Développée avec React, Laravel et Inertia, cette application combine une 
+                                    interface moderne avec une architecture robuste. */}
+                                    {trans_acc.description2_about}
                                 </p>
                             </div>
                             <div className="mt-8 lg:mt-0 lg:w-1/2 lg:pl-8">
                                 <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Technologies utilisées</h3>
+                                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">{/*Technologies utilisées*/} {trans_acc.tech_title} </h3>
                                     <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                                         <li className="flex items-center">
                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
-                                            React pour l'interface utilisateur
+                                            {/* React pour l'interface utilisateur */}
+                                            {trans_acc.tech_react}
                                         </li>
                                         <li className="flex items-center">
                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
-                                            Laravel pour le backend
+                                            {/* Laravel pour le backend */}
+                                            {trans_acc.tech_laravel}
                                         </li>
                                         <li className="flex items-center">
                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
-                                            Inertia.js pour connecter les deux
+                                            {/* Inertia.js pour connecter les deux */}
+                                            {trans_acc.tech_inertia}
                                         </li>
                                         <li className="flex items-center">
                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
-                                            Tailwind CSS pour le design
+                                            {/* Tailwind CSS pour le design */}
+                                            {trans_acc.tech_tailwind}
                                         </li>
                                     </ul>
                                 </div>
@@ -575,17 +591,20 @@ export default function Welcome({ auth }) {
                 <div className="py-10 bg-blue-600">
                     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 className="text-2xl font-bold text-white">
-                            Prêt à essayer TaskManager?
+                            {/* Prêt à essayer TaskManager? */}
+                            {trans_acc.cta_title}
                         </h2>
                         <p className="mt-3 text-blue-100">
-                            Inscrivez-vous gratuitement et commencez à organiser vos tâches dès aujourd'hui
+                            {/* Inscrivez-vous gratuitement et commencez à organiser vos tâches dès aujourd'hui */}
+                            {trans_acc.cta_subtitle}
                         </p>
                         <div className="mt-6">
                             <Link
                                 href={route('register')}
                                 className="px-5 py-2 rounded-md bg-white text-blue-600 font-medium hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white transition-colors"
                             >
-                                Créer un compte
+                                {/* Créer un compte */}
+                                {trans_acc.cta_button}
                             </Link>
                         </div>
                     </div>
@@ -602,12 +621,14 @@ export default function Welcome({ auth }) {
                                     alt="TaskManager Logo" 
                                 />
                                 <span className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-                                    TaskManager - Projet de fin d'études
+                                    {/* TaskManager - Projet de fin d'études */}
+                                    {trans_acc.footer_text}
                                 </span>
                             </div>
                             <div className="mt-4 md:mt-0">
                                 <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-                                    &copy; {new Date().getFullYear()} - Tous droits réservés
+                                    {/* &copy; {new Date().getFullYear()} - Tous droits réservés */}
+                                    &copy; {new Date().getFullYear()} - {trans_acc.footer_rights}
                                 </p>
                             </div>
                         </div>
