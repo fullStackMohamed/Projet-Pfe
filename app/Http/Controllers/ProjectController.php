@@ -40,6 +40,7 @@ class ProjectController extends Controller
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
             'translations' => __('project'),
+            'isAdmin' => auth()->user()->role === 'admin', //pour filtrage et trie
 
         ]);
     }

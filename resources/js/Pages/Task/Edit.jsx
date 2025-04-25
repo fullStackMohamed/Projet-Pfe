@@ -37,7 +37,7 @@ export default function Edit({ auth, task, projects, users, translations }) {
       }
     });
   }else {
-    console.log("task.id :", task.id); // 👈 ici
+    console.log("task.id :", task.id);
 
     post(route('myTasks.update', task.id ), {
       forceFormData: true,  // Force l'utilisation de FormData pour les fichiers
@@ -207,9 +207,18 @@ export default function Edit({ auth, task, projects, users, translations }) {
                                 }      
                 
                                 <div className="mt-4 text-right">
+                                {auth.user.role == "admin" &&
                                   <Link href={route('task.index')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">
                                     {/* Cancel */} {translations.cancel}
                                   </Link>
+                                }
+
+                                {auth.user.role == "user" &&
+                                  <Link href={route('myTasks')} className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2">
+                                    {/* Cancel */} {translations.cancel}
+                                  </Link>
+                                }
+
                                   <button type="submit" className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
                                     {/* Update Task */}
                                     {processing ? translations.updating_button : translations.update_button}

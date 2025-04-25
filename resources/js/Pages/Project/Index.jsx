@@ -229,7 +229,7 @@ import TableHeading from "@/Components/TableHeading";
 import { useTranslations } from "@/useTranslations";
 
 export default function Index({auth, projects, queryParams = null,
-    success, translations
+    success, translations, isAdmin
  }) {
     queryParams = queryParams || {}
     const searchFieldChanged = (name, value) => {
@@ -239,7 +239,9 @@ export default function Index({auth, projects, queryParams = null,
             delete queryParams[name]
         }
 
-        router.get(route('project.index'), queryParams)
+        const routeToCall = isAdmin?route('project.index'):route('myProjects');
+        router.get(routeToCall, queryParams);
+        // router.get(route('project.index'), queryParams)
     }
 
     const onKeyPress = (name, e) => {
@@ -259,7 +261,10 @@ export default function Index({auth, projects, queryParams = null,
             queryParams.sort_field = name;
             queryParams.sort_direction = 'asc';
         }
-        router.get(route('project.index'), queryParams)
+
+        const routeToCall = isAdmin?route('project.index'):route('myProjects');
+        router.get(routeToCall, queryParams);
+        // router.get(route('project.index'), queryParams)
     };
 
     const deleteProject = (project) => {
@@ -444,6 +449,6 @@ export default function Index({auth, projects, queryParams = null,
                 </div>
             </div>
             
-              </AuthenticatedLayout>
+            </AuthenticatedLayout>
         )      
 }

@@ -245,7 +245,7 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
         } 
         
         if (auth.user.role === 'user') {
-            router.get(route('myTasks.index'), queryParams);
+            router.get(route('myTasks'), queryParams);
         }
     };
     
@@ -271,7 +271,7 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
         }
         
         if (auth.user.role === "user") {
-            router.get(route('myTasks.index'), queryParams);
+            router.get(route('myTasks'), queryParams);
         }
     };
 
