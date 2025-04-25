@@ -366,274 +366,614 @@
 
 
 
+// import { Head, Link, usePage } from '@inertiajs/react';
+// import LanguageSwitcher from './Langue/LanguageSwitcher';
+// import DarkModeToggle from '@/DarkMode/DarkModeToggle';
+
+// export default function Welcome({ auth }) {
+//     const {trans_acc} = usePage().props;
+
+//     return (
+//         <>
+//             <Head title={trans_acc.title} />
+
+//             <div className="bg-gray-50 min-h-screen text-gray-800 dark:bg-gray-900 dark:text-white">
+//                 {/* Navbar */}
+//                 <nav className="bg-white shadow-sm dark:bg-gray-800 dark:border-b dark:border-gray-700">
+//                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//                         <div className="flex justify-between h-16">
+//                             <div className="flex items-center">
+//                                 <div className="flex-shrink-0 flex items-center">
+//                                     <img 
+//                                         className="h-14 w-auto" 
+//                                         src="/storage/logoApp/task-management-logo-v7.svg" 
+//                                         alt="TaskManager Logo" 
+//                                     />
+//                                     <span className="ml-2 text-lg font-semibold text-blue-600 dark:text-blue-400">
+//                                         {/* TaskManager */}
+//                                         {trans_acc.nav_title}
+//                                     </span>
+//                                 </div>
+//                             </div>
+//                             <div className="flex items-center space-x-4">
+//                                 <DarkModeToggle />
+//                                 <LanguageSwitcher />
+                                
+//                                 {auth?.user ? (
+//                                     <Link
+//                                         href={route('dashboard')}
+//                                         className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+//                                     >
+//                                         {/* Tableau de bord */} {trans_acc.dashboard}
+//                                     </Link>
+//                                 ) : (
+//                                     <div className="flex space-x-4">
+//                                         <Link
+//                                             href={route('login')}
+//                                             className="px-4 py-2 rounded-md text-blue-600 font-medium hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+//                                         >
+//                                             {/* Connexion */} {trans_acc.login}
+//                                         </Link>
+//                                         <Link
+//                                             href={route('register')}
+//                                             className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+//                                         >
+//                                             {/* S'inscrire */} {trans_acc.register}
+//                                         </Link>
+//                                     </div>
+//                                 )}
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </nav>
+
+//                 {/* Hero Section */}
+//                 <div className="py-12">
+//                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//                         <div className="lg:flex lg:items-center lg:justify-between">
+//                             <div className="lg:w-1/2">
+//                                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+//                                     {/* Simplifiez la gestion de vos <span className="text-blue-600 dark:text-blue-400">tâches</span> */}
+//                                     {trans_acc.hero_title}
+//                                 </h1>
+//                                 <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+//                                     {/* Une application simple et intuitive pour organiser votre travail
+//                                     et suivre l'avancement de vos projets. */}
+//                                     {trans_acc.hero_description}
+//                                 </p>
+//                                 <div className="mt-8 flex gap-4">
+//                                     <Link
+//                                         href={route('register')}
+//                                         className="px-5 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+//                                     >
+//                                         {/* Commencer */} {trans_acc.get_started}
+//                                     </Link>
+//                                     <Link
+//                                         href="#features"
+//                                         className="px-5 py-2 rounded-md border border-gray-300 bg-white text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700"
+//                                     >
+//                                         {/* En savoir plus */} {trans_acc.learn_more}
+//                                     </Link>
+//                                 </div>
+//                             </div>
+//                             <div className="mt-10 lg:mt-0 lg:w-1/2">
+//                                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+//                                     <img
+//                                         src="/storage/imageAcceuil/acceuil.webp"
+//                                         alt="TaskManager Interface"
+//                                         className="w-full h-auto rounded-md"
+//                                     />
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 {/* Features */}
+//                 <div id="features" className="py-12 bg-white dark:bg-gray-800">
+//                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//                         <div className="text-center">
+//                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+//                                 {/* Fonctionnalités principales */} {trans_acc.title_features}
+//                             </h2>
+//                             <p className="mt-3 text-gray-600 dark:text-gray-300">
+//                                 {/* Les outils essentiels pour gérer vos tâches efficacement */}
+//                                 {trans_acc.subtitle_features}
+//                             </p>
+//                         </div>
+
+//                         <div className="mt-10 grid gap-6 md:grid-cols-3">
+//                             {/* Feature 1 */}
+//                             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm">
+//                                 <div className="h-10 w-10 rounded-md bg-blue-600 flex items-center justify-center mb-4">
+//                                     <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+//                                     </svg>
+//                                 </div>
+//                                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Suivi des tâches*/} {trans_acc.title_features} </h3>
+//                                 <p className="mt-2 text-gray-600 dark:text-gray-300">
+//                                     {/* Créez, organisez et suivez facilement vos tâches quotidiennes. */}
+//                                     {trans_acc.description_task_tracking}
+//                                 </p>
+//                             </div>
+
+//                             {/* Feature 2 */}
+//                             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm">
+//                                 <div className="h-10 w-10 rounded-md bg-blue-600 flex items-center justify-center mb-4">
+//                                     <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+//                                     </svg>
+//                                 </div>
+//                                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Planification*/} {trans_acc.title_planning}</h3>
+//                                 <p className="mt-2 text-gray-600 dark:text-gray-300">
+//                                     {/* Planifiez vos tâches avec des dates d'échéance et des rappels. */}
+//                                     {trans_acc.description_planning}
+//                                 </p>
+//                             </div>
+
+//                             {/* Feature 3 */}
+//                             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm">
+//                                 <div className="h-10 w-10 rounded-md bg-blue-600 flex items-center justify-center mb-4">
+//                                     <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+//                                     </svg>
+//                                 </div>
+//                                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Progression*/} {trans_acc.title_progress} </h3>
+//                                 <p className="mt-2 text-gray-600 dark:text-gray-300">
+//                                     {/* Visualisez votre progression et améliorez votre productivité. */}
+//                                     {trans_acc.description_progress}
+//                                 </p>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 {/* About Project */}
+//                 <div className="py-12 bg-gray-50 dark:bg-gray-900">
+//                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//                         <div className="lg:flex lg:items-center lg:justify-between">
+//                             <div className="lg:w-1/2">
+//                                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+//                                     {/* À propos du projet */} {trans_acc.title_about}
+//                                 </h2>
+//                                 <p className="mt-4 text-gray-600 dark:text-gray-300">
+//                                     {/* TaskManager est une application de gestion de tâches développée dans le cadre 
+//                                     d'un projet de fin d'études. L'objectif est de créer une solution simple et 
+//                                     efficace pour aider les utilisateurs à mieux organiser leur travail et leurs projets. */}
+//                                     {trans_acc.description1_about}
+//                                 </p>
+//                                 <p className="mt-4 text-gray-600 dark:text-gray-300">
+//                                     {/* Développée avec React, Laravel et Inertia, cette application combine une 
+//                                     interface moderne avec une architecture robuste. */}
+//                                     {trans_acc.description2_about}
+//                                 </p>
+//                             </div>
+//                             <div className="mt-8 lg:mt-0 lg:w-1/2 lg:pl-8">
+//                                 <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+//                                     <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">{/*Technologies utilisées*/} {trans_acc.tech_title} </h3>
+//                                     <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+//                                         <li className="flex items-center">
+//                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+//                                             </svg>
+//                                             {/* React pour l'interface utilisateur */}
+//                                             {trans_acc.tech_react}
+//                                         </li>
+//                                         <li className="flex items-center">
+//                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+//                                             </svg>
+//                                             {/* Laravel pour le backend */}
+//                                             {trans_acc.tech_laravel}
+//                                         </li>
+//                                         <li className="flex items-center">
+//                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+//                                             </svg>
+//                                             {/* Inertia.js pour connecter les deux */}
+//                                             {trans_acc.tech_inertia}
+//                                         </li>
+//                                         <li className="flex items-center">
+//                                             <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+//                                             </svg>
+//                                             {/* Tailwind CSS pour le design */}
+//                                             {trans_acc.tech_tailwind}
+//                                         </li>
+//                                     </ul>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 {/* CTA */}
+//                 <div className="py-10 bg-blue-600">
+//                     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//                         <h2 className="text-2xl font-bold text-white">
+//                             {/* Prêt à essayer TaskManager? */}
+//                             {trans_acc.cta_title}
+//                         </h2>
+//                         <p className="mt-3 text-blue-100">
+//                             {/* Inscrivez-vous gratuitement et commencez à organiser vos tâches dès aujourd'hui */}
+//                             {trans_acc.cta_subtitle}
+//                         </p>
+//                         <div className="mt-6">
+//                             <Link
+//                                 href={route('register')}
+//                                 className="px-5 py-2 rounded-md bg-white text-blue-600 font-medium hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white transition-colors"
+//                             >
+//                                 {/* Créer un compte */}
+//                                 {trans_acc.cta_button}
+//                             </Link>
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 {/* Footer */}
+//                 <footer className="bg-white dark:bg-gray-800">
+//                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+//                         <div className="md:flex md:items-center md:justify-between">
+//                             <div className="flex justify-center md:justify-start items-center">
+//                                 <img 
+//                                     className="h-6 w-auto" 
+//                                     src="/storage/logoApp/task-management-logo-v7.svg" 
+//                                     alt="TaskManager Logo" 
+//                                 />
+//                                 <span className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+//                                     {/* TaskManager - Projet de fin d'études */}
+//                                     {trans_acc.footer_text}
+//                                 </span>
+//                             </div>
+//                             <div className="mt-4 md:mt-0">
+//                                 <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+//                                     {/* &copy; {new Date().getFullYear()} - Tous droits réservés */}
+//                                     &copy; {new Date().getFullYear()} - {trans_acc.footer_rights}
+//                                 </p>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </footer>
+//             </div>
+//         </>
+//     );
+// }
+
+
+
+
+
+
+
+
+
+
+
 import { Head, Link, usePage } from '@inertiajs/react';
 import LanguageSwitcher from './Langue/LanguageSwitcher';
 import DarkModeToggle from '@/DarkMode/DarkModeToggle';
+import { useState } from 'react';
 
 export default function Welcome({ auth }) {
-    const {trans_acc} = usePage().props;
-
+    const { trans_acc } = usePage().props;
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
     return (
         <>
             <Head title={trans_acc.title} />
 
             <div className="bg-gray-50 min-h-screen text-gray-800 dark:bg-gray-900 dark:text-white">
-                {/* Navbar */}
-                <nav className="bg-white shadow-sm dark:bg-gray-800 dark:border-b dark:border-gray-700">
+                {/* Fixed Navbar */}
+                <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md dark:bg-gray-800 dark:border-b dark:border-gray-700">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
+                            {/* Logo and Brand */}
                             <div className="flex items-center">
-                                <div className="flex-shrink-0 flex items-center">
-                                    <img 
-                                        className="h-14 w-auto" 
-                                        src="/storage/logoApp/task-management-logo-v7.svg" 
-                                        alt="TaskManager Logo" 
-                                    />
-                                    <span className="ml-2 text-lg font-semibold text-blue-600 dark:text-blue-400">
-                                        {/* TaskManager */}
-                                        {trans_acc.nav_title}
-                                    </span>
-                                </div>
+                                <img 
+                                    className="h-8 w-auto" 
+                                    src="/storage/logoApp/task-management-logo-v7.svg" 
+                                    alt="TaskManager Logo" 
+                                />
+                                <span className="ml-2 text-lg font-semibold text-blue-600 dark:text-blue-400">
+                                    {trans_acc.nav_title}
+                                </span>
                             </div>
-                            <div className="flex items-center space-x-4">
-                                <DarkModeToggle />
-                                <LanguageSwitcher />
+                            
+                            {/* Mobile menu button */}
+                            <div className="flex items-center lg:hidden">
+                                <button 
+                                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                    className="p-2 rounded-md text-gray-500 hover:text-blue-600 focus:outline-none"
+                                >
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            strokeWidth={2} 
+                                            d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} 
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            {/* Desktop Navigation */}
+                            <div className="hidden lg:flex lg:items-center lg:space-x-4">
+                                <div className="flex items-center space-x-3 mr-4">
+                                    <DarkModeToggle />
+                                    <LanguageSwitcher />
+                                </div>
                                 
                                 {auth?.user ? (
                                     <Link
                                         href={route('dashboard')}
-                                        className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                                        className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-150"
                                     >
-                                        {/* Tableau de bord */} {trans_acc.dashboard}
+                                        {trans_acc.dashboard}
                                     </Link>
                                 ) : (
                                     <div className="flex space-x-4">
                                         <Link
                                             href={route('login')}
-                                            className="px-4 py-2 rounded-md text-blue-600 font-medium hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                                            className="px-4 py-2 rounded-md text-blue-600 font-medium hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition duration-150"
                                         >
-                                            {/* Connexion */} {trans_acc.login}
+                                            {trans_acc.login}
                                         </Link>
                                         <Link
                                             href={route('register')}
-                                            className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                                            className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-150"
                                         >
-                                            {/* S'inscrire */} {trans_acc.register}
+                                            {trans_acc.register}
                                         </Link>
                                     </div>
                                 )}
                             </div>
                         </div>
                     </div>
+                    
+                    {/* Mobile Menu Dropdown */}
+                    {mobileMenuOpen && (
+                        <div className="lg:hidden border-t border-gray-200 dark:border-gray-700">
+                            <div className="px-4 py-4 space-y-4">
+                                <div className="flex justify-center space-x-4">
+                                    <DarkModeToggle />
+                                    <LanguageSwitcher />
+                                </div>
+                                
+                                {auth?.user ? (
+                                    <div className="pt-2">
+                                        <Link
+                                            href={route('dashboard')}
+                                            className="block w-full text-center px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-150"
+                                        >
+                                            {trans_acc.dashboard}
+                                        </Link>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-2 pt-2">
+                                        <Link
+                                            href={route('login')}
+                                            className="block w-full text-center px-4 py-2 rounded-md text-blue-600 bg-gray-100 font-medium hover:bg-gray-200 dark:bg-gray-700 dark:text-blue-400 dark:hover:bg-gray-600 transition duration-150"
+                                        >
+                                            {trans_acc.login}
+                                        </Link>
+                                        <Link
+                                            href={route('register')}
+                                            className="block w-full text-center px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-150"
+                                        >
+                                            {trans_acc.register}
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </nav>
 
-                {/* Hero Section */}
-                <div className="py-12">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="lg:flex lg:items-center lg:justify-between">
-                            <div className="lg:w-1/2">
-                                <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-                                    {/* Simplifiez la gestion de vos <span className="text-blue-600 dark:text-blue-400">tâches</span> */}
-                                    {trans_acc.hero_title}
-                                </h1>
-                                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-                                    {/* Une application simple et intuitive pour organiser votre travail
-                                    et suivre l'avancement de vos projets. */}
-                                    {trans_acc.hero_description}
-                                </p>
-                                <div className="mt-8 flex gap-4">
-                                    <Link
-                                        href={route('register')}
-                                        className="px-5 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
-                                    >
-                                        {/* Commencer */} {trans_acc.get_started}
-                                    </Link>
-                                    <Link
-                                        href="#features"
-                                        className="px-5 py-2 rounded-md border border-gray-300 bg-white text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700"
-                                    >
-                                        {/* En savoir plus */} {trans_acc.learn_more}
-                                    </Link>
+                {/* Page Content with padding top to account for fixed navbar */}
+                <div className="pt-16">
+                    {/* Hero Section */}
+                    <div className="py-12 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="lg:flex lg:items-center lg:justify-between">
+                                <div className="lg:w-1/2">
+                                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
+                                        {trans_acc.hero_title}
+                                    </h1>
+                                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                        {trans_acc.hero_description}
+                                    </p>
+                                    <div className="mt-8 flex flex-wrap gap-4">
+                                        <Link
+                                            href={route('register')}
+                                            className="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-500 shadow-md hover:shadow-lg transition duration-300"
+                                        >
+                                            {trans_acc.get_started}
+                                        </Link>
+                                        <Link
+                                            href="#features"
+                                            className="px-6 py-3 rounded-lg bg-white text-blue-600 font-medium hover:bg-gray-50 shadow-md hover:shadow-lg transition duration-300 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
+                                        >
+                                            {trans_acc.learn_more}
+                                        </Link>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="mt-10 lg:mt-0 lg:w-1/2">
-                                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
-                                    <img
-                                        src="/storage/imageAcceuil/acceuil.webp"
-                                        alt="TaskManager Interface"
-                                        className="w-full h-auto rounded-md"
-                                    />
+                                <div className="mt-10 lg:mt-0 lg:w-1/2">
+                                    <div className="bg-white rounded-xl shadow-xl overflow-hidden dark:bg-gray-800">
+                                        <img
+                                            src="/storage/imageAcceuil/acceuil.webp"
+                                            alt="TaskManager Interface"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Features */}
-                <div id="features" className="py-12 bg-white dark:bg-gray-800">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                                {/* Fonctionnalités principales */} {trans_acc.title_features}
-                            </h2>
-                            <p className="mt-3 text-gray-600 dark:text-gray-300">
-                                {/* Les outils essentiels pour gérer vos tâches efficacement */}
-                                {trans_acc.subtitle_features}
-                            </p>
-                        </div>
-
-                        <div className="mt-10 grid gap-6 md:grid-cols-3">
-                            {/* Feature 1 */}
-                            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm">
-                                <div className="h-10 w-10 rounded-md bg-blue-600 flex items-center justify-center mb-4">
-                                    <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Suivi des tâches*/} {trans_acc.title_features} </h3>
-                                <p className="mt-2 text-gray-600 dark:text-gray-300">
-                                    {/* Créez, organisez et suivez facilement vos tâches quotidiennes. */}
-                                    {trans_acc.description_task_tracking}
-                                </p>
-                            </div>
-
-                            {/* Feature 2 */}
-                            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm">
-                                <div className="h-10 w-10 rounded-md bg-blue-600 flex items-center justify-center mb-4">
-                                    <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Planification*/} {trans_acc.title_planning}</h3>
-                                <p className="mt-2 text-gray-600 dark:text-gray-300">
-                                    {/* Planifiez vos tâches avec des dates d'échéance et des rappels. */}
-                                    {trans_acc.description_planning}
-                                </p>
-                            </div>
-
-                            {/* Feature 3 */}
-                            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-5 shadow-sm">
-                                <div className="h-10 w-10 rounded-md bg-blue-600 flex items-center justify-center mb-4">
-                                    <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{/*Progression*/} {trans_acc.title_progress} </h3>
-                                <p className="mt-2 text-gray-600 dark:text-gray-300">
-                                    {/* Visualisez votre progression et améliorez votre productivité. */}
-                                    {trans_acc.description_progress}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* About Project */}
-                <div className="py-12 bg-gray-50 dark:bg-gray-900">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="lg:flex lg:items-center lg:justify-between">
-                            <div className="lg:w-1/2">
-                                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                                    {/* À propos du projet */} {trans_acc.title_about}
+                    {/* Features */}
+                    <div id="features" className="py-16">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="text-center">
+                                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                                    {trans_acc.title_features}
                                 </h2>
-                                <p className="mt-4 text-gray-600 dark:text-gray-300">
-                                    {/* TaskManager est une application de gestion de tâches développée dans le cadre 
-                                    d'un projet de fin d'études. L'objectif est de créer une solution simple et 
-                                    efficace pour aider les utilisateurs à mieux organiser leur travail et leurs projets. */}
-                                    {trans_acc.description1_about}
-                                </p>
-                                <p className="mt-4 text-gray-600 dark:text-gray-300">
-                                    {/* Développée avec React, Laravel et Inertia, cette application combine une 
-                                    interface moderne avec une architecture robuste. */}
-                                    {trans_acc.description2_about}
+                                <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                                    {trans_acc.subtitle_features}
                                 </p>
                             </div>
-                            <div className="mt-8 lg:mt-0 lg:w-1/2 lg:pl-8">
-                                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">{/*Technologies utilisées*/} {trans_acc.tech_title} </h3>
-                                    <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                                        <li className="flex items-center">
-                                            <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            {/* React pour l'interface utilisateur */}
-                                            {trans_acc.tech_react}
-                                        </li>
-                                        <li className="flex items-center">
-                                            <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            {/* Laravel pour le backend */}
-                                            {trans_acc.tech_laravel}
-                                        </li>
-                                        <li className="flex items-center">
-                                            <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            {/* Inertia.js pour connecter les deux */}
-                                            {trans_acc.tech_inertia}
-                                        </li>
-                                        <li className="flex items-center">
-                                            <svg className="h-5 w-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            {/* Tailwind CSS pour le design */}
-                                            {trans_acc.tech_tailwind}
-                                        </li>
-                                    </ul>
+
+                            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                                {/* Feature 1 */}
+                                <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300 dark:bg-gray-800">
+                                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-5 dark:bg-blue-900">
+                                        <svg className="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                        {trans_acc.title_task_tracking || "Suivi des tâches"}
+                                    </h3>
+                                    <p className="mt-3 text-gray-600 dark:text-gray-300">
+                                        {trans_acc.description_task_tracking}
+                                    </p>
+                                </div>
+
+                                {/* Feature 2 */}
+                                <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300 dark:bg-gray-800">
+                                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-5 dark:bg-blue-900">
+                                        <svg className="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                        {trans_acc.title_planning}
+                                    </h3>
+                                    <p className="mt-3 text-gray-600 dark:text-gray-300">
+                                        {trans_acc.description_planning}
+                                    </p>
+                                </div>
+
+                                {/* Feature 3 */}
+                                <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300 dark:bg-gray-800">
+                                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-5 dark:bg-blue-900">
+                                        <svg className="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                        {trans_acc.title_progress}
+                                    </h3>
+                                    <p className="mt-3 text-gray-600 dark:text-gray-300">
+                                        {trans_acc.description_progress}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* CTA */}
-                <div className="py-10 bg-blue-600">
-                    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <h2 className="text-2xl font-bold text-white">
-                            {/* Prêt à essayer TaskManager? */}
-                            {trans_acc.cta_title}
-                        </h2>
-                        <p className="mt-3 text-blue-100">
-                            {/* Inscrivez-vous gratuitement et commencez à organiser vos tâches dès aujourd'hui */}
-                            {trans_acc.cta_subtitle}
-                        </p>
-                        <div className="mt-6">
-                            <Link
-                                href={route('register')}
-                                className="px-5 py-2 rounded-md bg-white text-blue-600 font-medium hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white transition-colors"
-                            >
-                                {/* Créer un compte */}
-                                {trans_acc.cta_button}
-                            </Link>
+                    {/* About Project */}
+                    <div className="py-16 bg-gray-50 dark:bg-gray-900">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="lg:flex lg:items-center lg:justify-between">
+                                <div className="lg:w-1/2">
+                                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                                        {trans_acc.title_about}
+                                    </h2>
+                                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                        {trans_acc.description1_about}
+                                    </p>
+                                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                                        {trans_acc.description2_about}
+                                    </p>
+                                </div>
+                                <div className="mt-10 lg:mt-0 lg:w-1/2 lg:pl-8">
+                                    <div className="bg-white rounded-xl p-6 shadow-lg dark:bg-gray-800">
+                                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-5">
+                                            {trans_acc.tech_title}
+                                        </h3>
+                                        <ul className="space-y-4">
+                                            <li className="flex items-center">
+                                                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0 dark:bg-blue-900">
+                                                    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-gray-700 dark:text-gray-300">{trans_acc.tech_react}</span>
+                                            </li>
+                                            <li className="flex items-center">
+                                                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0 dark:bg-blue-900">
+                                                    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-gray-700 dark:text-gray-300">{trans_acc.tech_laravel}</span>
+                                            </li>
+                                            <li className="flex items-center">
+                                                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0 dark:bg-blue-900">
+                                                    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-gray-700 dark:text-gray-300">{trans_acc.tech_inertia}</span>
+                                            </li>
+                                            <li className="flex items-center">
+                                                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0 dark:bg-blue-900">
+                                                    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <span className="text-gray-700 dark:text-gray-300">{trans_acc.tech_tailwind}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Footer */}
-                <footer className="bg-white dark:bg-gray-800">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                        <div className="md:flex md:items-center md:justify-between">
-                            <div className="flex justify-center md:justify-start items-center">
-                                <img 
-                                    className="h-6 w-auto" 
-                                    src="/storage/logoApp/task-management-logo-v7.svg" 
-                                    alt="TaskManager Logo" 
-                                />
-                                <span className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-                                    {/* TaskManager - Projet de fin d'études */}
-                                    {trans_acc.footer_text}
-                                </span>
-                            </div>
-                            <div className="mt-4 md:mt-0">
-                                <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-                                    {/* &copy; {new Date().getFullYear()} - Tous droits réservés */}
-                                    &copy; {new Date().getFullYear()} - {trans_acc.footer_rights}
-                                </p>
+                    {/* CTA */}
+                    <div className="py-16 bg-gradient-to-r from-blue-600 to-indigo-600">
+                        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                            <h2 className="text-3xl font-bold text-white">
+                                {trans_acc.cta_title}
+                            </h2>
+                            <p className="mt-4 text-xl text-blue-100">
+                                {trans_acc.cta_subtitle}
+                            </p>
+                            <div className="mt-8">
+                                <Link
+                                    href={route('register')}
+                                    className="px-8 py-3 rounded-lg bg-white text-blue-600 font-medium hover:bg-blue-50 shadow-lg hover:shadow-xl transition duration-300"
+                                >
+                                    {trans_acc.cta_button}
+                                </Link>
                             </div>
                         </div>
                     </div>
-                </footer>
+
+                    {/* Footer */}
+                    <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                            <div className="md:flex md:items-center md:justify-between">
+                                <div className="flex justify-center md:justify-start items-center">
+                                    <img 
+                                        className="h-6 w-auto" 
+                                        src="/storage/logoApp/task-management-logo-v7.svg" 
+                                        alt="TaskManager Logo" 
+                                    />
+                                    <span className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                        {trans_acc.footer_text}
+                                    </span>
+                                </div>
+                                <div className="mt-4 md:mt-0">
+                                    <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+                                        &copy; {new Date().getFullYear()} - {trans_acc.footer_rights}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
             </div>
         </>
     );

@@ -454,7 +454,7 @@ export default function TasksTable({ tasks, success, queryParams = null, hidePro
                                             {/*Edit*/} {translations.edit} 
                                         </Link>
                                     )}
-                                       <span className="text-nowrap text-gray-400 italic">{auth.user.role === 'user' && task.assigned_user_id !== auth.user.id && 'Non autorisé'}</span> 
+                                       <span className="text-nowrap text-gray-400 italic">{auth.user.role === 'user' && task.assigned_user_id !== auth.user.id && translations.not_allowed}</span> 
 
                                     
                                     {auth.user.role === 'admin' && (

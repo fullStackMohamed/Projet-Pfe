@@ -19,5 +19,6 @@ return [
        "actions" => "Actions",
        "edit" => "Edit",
        "delete" => "Delete",
-       "confirm_delete" => "Are you sure you want to delete the task?"                                  
+       "confirm_delete" => "Are you sure you want to delete the task?", 
+       'not_allowed' => 'Not allowed',                                 
 ];

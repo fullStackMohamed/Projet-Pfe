@@ -115,12 +115,25 @@ export default function Show({auth, task, translations}) {
                         <div className="mt-4">
                             <label className="font-bold text-lg dark:text-gray-200">{/*Project*/} {translations.project}</label>
                             <p className="mt-1 dark:text-white">
+                            {
+                            auth.user.role === 'admin' &&
                                 <Link 
                                 href={route("project.show", task.project.id)}
                                 className="hover:underline"
                                 >
                                     {task.project.name}
                                 </Link>
+                            }
+
+                            {
+                            auth.user.role === 'user' &&
+                                <Link 
+                                href={route("my-Project.show", task.project.id)}
+                                className="hover:underline"
+                                >
+                                    {task.project.name}
+                                </Link>
+                            }
                             </p>    
                         </div> 
                         

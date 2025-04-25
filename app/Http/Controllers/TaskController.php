@@ -133,7 +133,7 @@ class TaskController extends Controller
         'name' => $data['name'],
         'description' => $data['description'],
         'status' => $data['status'],
-        // 'priority' => $data['priority'],
+        'priority' => $data['priority'],
         'due_date' => $data['due_date'],
         'assigned_user_id' => $data['assigned_user_id'],
         'project_id' => $data['project_id'], // Permet de changer le projet associé
