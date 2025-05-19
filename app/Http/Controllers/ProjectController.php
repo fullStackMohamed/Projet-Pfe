@@ -85,7 +85,6 @@ class ProjectController extends Controller
         }
         Project::create($data);
 
-        
         return to_route('project.index')->with('success', 'Project was created');
     }
 
@@ -201,3 +200,4 @@ class ProjectController extends Controller
         return to_route('project.index')->with('success', "Project \"$name\" was deleted");
     }
 }
+

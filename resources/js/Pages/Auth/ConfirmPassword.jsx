@@ -60,7 +60,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -74,22 +74,27 @@ export default function ConfirmPassword() {
         });
     };
 
+    const { trans_conf } = usePage().props;
+
+
     return (
         <GuestLayout>
-            <Head title="Confirmation du mot de passe" />
+            {/* <Head title="Confirmation du mot de passe" /> */}
+            <Head title={trans_conf.title} />
 
             <div className="max-w-md mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-                    🔐 Confirmation requise
+                    {/* 🔐 Confirmation requise */} {trans_conf.heading}
                 </h2>
 
                 <div className="mb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    C'est une zone sécurisée de l’application. Veuillez confirmer votre mot de passe avant de continuer.
+                    {/* C'est une zone sécurisée de l’application. Veuillez confirmer votre mot de passe avant de continuer. */}
+                    {trans_conf.description}
                 </div>
 
                 <form onSubmit={submit} className="space-y-4">
                     <div>
-                        <InputLabel htmlFor="password" value="Mot de passe" />
+                        <InputLabel htmlFor="password" value={trans_conf.password} /> {/*value="Mot de passe"*/}
 
                         <TextInput
                             id="password"
@@ -105,7 +110,7 @@ export default function ConfirmPassword() {
                     </div>
 
                     <PrimaryButton className="w-full justify-center" disabled={processing}>
-                        ✅ Confirmer
+                        {/* ✅ Confirmer */} {trans_conf.submit}
                     </PrimaryButton>
                 </form>
             </div>

@@ -17,7 +17,7 @@ return [
     "completed" => "Terminée",
     "created_by" => "Créé par",
     "actions" => "Actions",
-    "edit" => "modifier",
+    "edit" => "Modifier",
     "delete" => "Supprimer",
     "confirm_delete" => "Êtes-vous sûr de vouloir supprimer la tâche ?",
     'not_allowed' => 'Non autorisé',

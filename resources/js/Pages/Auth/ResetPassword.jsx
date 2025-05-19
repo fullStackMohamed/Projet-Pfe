@@ -101,7 +101,7 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, useForm } from '@inertiajs/react';
 
-export default function ResetPassword({ token, email }) {
+export default function ResetPassword({ token, email, trans_res }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         token: token,
         email: email,
@@ -119,16 +119,17 @@ export default function ResetPassword({ token, email }) {
 
     return (
         <GuestLayout>
-            <Head title="Réinitialiser le mot de passe" />
+            {/* <Head title="Réinitialiser le mot de passe" /> */}
+            <Head title={trans_res.title} />
 
             <div className="max-w-md mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-                    🔐 Réinitialiser le mot de passe
+                    {/* 🔐 Réinitialiser le mot de passe */} {trans_res.title}
                 </h2>
 
                 <form onSubmit={submit} className="space-y-4">
                     <div>
-                        <InputLabel htmlFor="email" value="Adresse email" />
+                        <InputLabel htmlFor="email" value={trans_res.email} /> {/* value="Adresse email"*/}
 
                         <TextInput
                             id="email"
@@ -144,7 +145,7 @@ export default function ResetPassword({ token, email }) {
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="password" value="Nouveau mot de passe" />
+                        <InputLabel htmlFor="password" value={trans_res.new_password} /> {/*value="Nouveau mot de passe"*/}
 
                         <TextInput
                             id="password"
@@ -161,7 +162,7 @@ export default function ResetPassword({ token, email }) {
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="password_confirmation" value="Confirmer le mot de passe" />
+                        <InputLabel htmlFor="password_confirmation" value={trans_res.confirm_password} /> {/*value="Confirmer le mot de passe"*/}
 
                         <TextInput
                             type="password"
@@ -183,7 +184,7 @@ export default function ResetPassword({ token, email }) {
 
                     <div className="pt-4 text-center">
                         <PrimaryButton className="w-full justify-center" disabled={processing}>
-                            🔄 Réinitialiser le mot de passe
+                            {/* 🔄 Réinitialiser le mot de passe */} {trans_res.submit}
                         </PrimaryButton>
                     </div>
                 </form>

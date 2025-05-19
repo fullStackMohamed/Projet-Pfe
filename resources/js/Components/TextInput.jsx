@@ -28,3 +28,14 @@ export default forwardRef(function TextInput(
         />
     );
 });
+
+
+// export default function TextInput({ type = 'text', className = '', ...props }) {
+//     return (
+//         <input
+//             {...props}
+//             type={type}
+//             className={'rounded-md border-gray-300 shadow-sm ... ' + className}
+//         />
+//     );
+// }

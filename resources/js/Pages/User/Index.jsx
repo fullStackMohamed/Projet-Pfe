@@ -354,8 +354,6 @@ export default function Index({auth, users, queryParams = null,
                     </div>
                 </div>
             </div>
-
-
                             
               </AuthenticatedLayout>
         )      

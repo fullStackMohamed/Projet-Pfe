@@ -52,10 +52,11 @@
 
 import PrimaryButton from '@/Components/PrimaryButton';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
+    const { trans_verify } = usePage().props;
 
     const submit = (e) => {
         e.preventDefault();
@@ -64,27 +65,31 @@ export default function VerifyEmail({ status }) {
 
     return (
         <GuestLayout>
-            <Head title="Vérification de l'email" />
+            {/* <Head title="Vérification de l'email" /> */}
+            <Head title={trans_verify.title} />
 
             <div className="max-w-md mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-                    📧 Vérifiez votre adresse email
+                    {/* 📧 Vérifiez votre adresse email */} {trans_verify.heading}
                 </h2>
 
                 <div className="mb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Merci de vous être inscrit ! Avant de commencer, veuillez confirmer votre adresse email en cliquant sur le lien que nous venons de vous envoyer. <br />
-                    Si vous n’avez pas reçu l’email, nous pouvons vous en renvoyer un.
+                    {/* Merci de vous être inscrit ! Avant de commencer, veuillez confirmer votre adresse email en cliquant sur le lien que nous venons de vous envoyer. <br />
+                    Si vous n’avez pas reçu l’email, nous pouvons vous en renvoyer un. */}
+                    {trans_verify.description}
                 </div>
 
                 {status === 'verification-link-sent' && (
                     <div className="mb-4 text-sm font-medium text-green-600 dark:text-green-400">
-                        ✅ Un nouveau lien de vérification a été envoyé à votre adresse email.
+                        {/* ✅ Un nouveau lien de vérification a été envoyé à votre adresse email. */}
+                        {trans_verify.resent}
                     </div>
                 )}
 
                 <form onSubmit={submit} className="space-y-4">
                     <PrimaryButton className="w-full justify-center" disabled={processing}>
-                        🔁 Renvoyer l'email de vérification
+                        {/* 🔁 Renvoyer l'email de vérification */}
+                        {trans_verify.resend_button}
                     </PrimaryButton>
 
                     <Link
@@ -93,7 +98,8 @@ export default function VerifyEmail({ status }) {
                         as="button"
                         className="w-full text-center mt-4 text-sm text-gray-600 underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                     >
-                        🚪 Se déconnecter
+                        {/* 🚪 Se déconnecter */} 
+                        {trans_verify.logout}
                     </Link>
                 </form>
             </div>

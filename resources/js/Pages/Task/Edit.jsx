@@ -223,8 +223,7 @@ export default function Edit({ auth, task, projects, users, translations }) {
                                     {/* Update Task */}
                                     {processing ? translations.updating_button : translations.update_button}
                                   </button>
-                                </div>
-                                
+                                </div>                               
               </form>
             </div>  
           </div>                

@@ -18,7 +18,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ReportController;
 
 
-// Redirection de la racine vers le tableau de bord
+// Redirection de la racine vers la page d'acceuil
 Route::get('/', function(){
     return Inertia::render('Welcome');
 });

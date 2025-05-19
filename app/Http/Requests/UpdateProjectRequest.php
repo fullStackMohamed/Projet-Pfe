@@ -59,7 +59,6 @@ class UpdateProjectRequest extends FormRequest
                 'image.mimes' => 'The image must be of type: jpeg, png, jpg, gif, svg.',
                 'image.max' => 'The image must not be larger than 2MB.',
             ];
-
     }
 
 

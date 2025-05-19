@@ -47,6 +47,9 @@ class HandleInertiaRequests extends Middleware
             'trans_reg' => __('registerAcc'), //pour Register.jsx
             'trans_const' => __('constant'),
             'trans_acc' => __('acceuil'),
+            'trans_res' => __('reset_password'),
+            'trans_conf' => __('confirmPassword'),
+            'trans_verify' => __('verifyEmail')
         ];
     }
 }
