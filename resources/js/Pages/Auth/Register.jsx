@@ -214,7 +214,7 @@ export default function Register({trans_reg}) {
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-white dark:bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <form onSubmit={submit} className="space-y-5">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">

@@ -38,8 +38,10 @@ class UserTaskNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                ->subject('Nouvelle tâche assignée')  // Sujet de l'email
-                ->line('Une nouvelle tâche vous a été assignée.')  // Corps de l'email
+                // ->subject('Nouvelle tâche assignée')  // Sujet de l'email
+                // ->line('Une nouvelle tâche vous a été assignée.')  // Corps de l'email
+                ->subject($this->data['subject'])
+                ->line($this->data['message'])
                 ->action('Voir la tâche', url('/task/' . $this->data['task_id']))  // Lien vers la tâche
                 ->line('Merci de consulter vos tâches assignées.');  // Message de fin
     }

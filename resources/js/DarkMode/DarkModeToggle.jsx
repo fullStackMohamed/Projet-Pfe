@@ -66,8 +66,8 @@ export default function DarkModeToggle() {
         >
             <span className="sr-only">{darkMode ? 'Activer le mode clair' : 'Activer le mode sombre'}</span>
             <span 
-                className={`${
-                    darkMode ? 'translate-x-6 bg-indigo-600' : 'translate-x-1 bg-white'
+                className={`absolute ${
+                    darkMode ? 'start-6 bg-indigo-600' : 'start-1 bg-white'
                 } inline-block h-4 w-4 transform rounded-full transition-transform duration-200 ease-in-out`}
             >
                 {darkMode ? (

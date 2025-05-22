@@ -142,13 +142,7 @@ export default function Login({ status, canResetPassword, trans_login }) {
         <GuestLayout>
             {/* <Head title="Login" /> */}
             <Head title={trans_login.title} />
-            <div className="fixed inset-0 -z-10">
-        <img
-            src="/imageFond/imageFond.jpg"
-            alt="Background"
-            className="w-full h-full object-cover opacity-30"
-        />
-    </div>
+            
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="text-center">
                     <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">
@@ -162,7 +156,7 @@ export default function Login({ status, canResetPassword, trans_login }) {
 
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-white dark:bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     {status && (
                         <div className="mb-4 rounded-md bg-green-50 dark:bg-green-900/30 p-4">
                             <div className="flex">

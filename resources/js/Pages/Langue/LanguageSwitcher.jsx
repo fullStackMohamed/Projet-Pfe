@@ -117,7 +117,7 @@ const LanguageSwitcher = () => {
               key={language.code}
               href={`/lang/${language.code}`}
               className="flex items-center px-4 py-2 hover:bg-blue-50 text-gray-700"
-              onClick={() => setIsOpen(false)} // 👈 ferme le menu après le clic
+              onClick={() => setIsOpen(false)} // ferme le menu après le clic
             >
               <GlobeAltIcon className="h-4 w-4 text-blue-500 mr-2" />
               <span>{language.name}</span>
